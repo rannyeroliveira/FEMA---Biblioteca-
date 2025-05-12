@@ -2,17 +2,18 @@
 
 #include<iostream>
 #include<stdio.h>
+#include<conio.h>
 #include<string.h>
 
 using namespace std;
 
-struct Cidades{
+struct Cidade{
     int idCidade;
     char descricao[70];
     char UF[30];
 };
 
-struct Pessoas{
+struct Pessoa{
     int idPessoa;
     char nomePessoas[50];
     char CPF[14];
@@ -20,24 +21,24 @@ struct Pessoas{
     int codigo_cidade;
 };
 
-struct Editoras{
+struct Editora{
     int idEditora;
     char nomeEdtr[50];
     int codigo_cidade;
 };
 
-struct Autores{
+struct Autor{
     int idAutor;
     char nomeAutor[60];
 };
 
-struct Generos{
+struct Genero{
     int idGenero;
     char descricao[80];
 };
 
 
-struct Livros{
+struct Livro{
     int idLivro;
     char nomeLivro[50];
     int codigo_editora;
@@ -46,7 +47,7 @@ struct Livros{
     bool disponivel;
 };
 
-//Empr�stimos: codigo (PK), codigo_pessoa, codigo_livro, data_empr�stimo, data_prevista_devolu��o, data_efetiva_devolu��o
+//Empréstimos: codigo (PK), codigo_pessoa, codigo_livro, data_empréstimo, data_prevista_devolução, data_efetiva_devolução
 struct Emprestimos{
     int idEmprestimo;
     int codigo_pessoa;
@@ -56,11 +57,11 @@ struct Emprestimos{
     char data_efetiva_devolucao[10];
 };
 
-//1) Escreva fun��es espec�ficas para a leitura dos dados das estruturas.
+//1) Escreva funções específicas para a leitura dos dados das estruturas.
 
 void lerCidades(struct Cidades cidade[]){
     for(int i=0; i<10; i++){
-        cout<<"---------------------------------------Insercao de dados Cidade---------------------------------------"<<endl;
+        cout<<"---------------------------------------Leitura de dados Cidade---------------------------------------"<<endl;
         cout<<"Digite o id da cidade"<<endl;
         cin>>cidade[i].idCidade;
         cin.ignore();
@@ -72,17 +73,21 @@ void lerCidades(struct Cidades cidade[]){
     }
 }
 
-/*
-struct Pessoas{
-    int idPessoa;
-    char nomePessoas[50];
-    char CPF[14];
-    char endereco[100];
-    int codigo_cidade;
-};
-*/
+void lerPessoas(struct Pessoas pessoa[]){
+    cout<<"---------------------------------------Leitura de dados PEssoa---------------------------------------"<<endl;
+    cout<<"Digite o id da pessoa:"<<endl;
+    cin>>
+}
+
 int main(){
-    struct Cidades cidade[100];
+    
+    struct Cidade cidades[100];
+    struct Pessoa pessoas[];
+    struct Editora editoras[];
+    struct Autor autores[];
+    struct Genero generos[];
+    struct Livro livros[];
+    lerCidades(cidade);
 }
 
 
