@@ -1,0 +1,3 @@
+C:/Users/ranny/CLionProjects/FEMA---Biblioteca-/cmake-build-debug/CMakeFiles/FEMA___Biblioteca_.dir
+C:/Users/ranny/CLionProjects/FEMA---Biblioteca-/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/ranny/CLionProjects/FEMA---Biblioteca-/cmake-build-debug/CMakeFiles/rebuild_cache.dir
