@@ -2,9 +2,7 @@
 
 #include<iostream>
 #include<stdio.h>
-#include<conio.h>
 #include<string.h>
-
 
 using namespace std;
 
