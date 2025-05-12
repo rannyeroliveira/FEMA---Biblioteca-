@@ -5,5 +5,3 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_executable(FEMA___Biblioteca_
     BIBLIOTECA.cpp)
-//rannyer teste
-//teste
