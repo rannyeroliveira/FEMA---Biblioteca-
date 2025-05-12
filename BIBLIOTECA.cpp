@@ -5,6 +5,7 @@
 #include<conio.h>
 #include<string.h>
 
+
 using namespace std;
 
 struct Cidades{
@@ -47,7 +48,7 @@ struct Livros{
     bool disponivel;
 };
 
-//Empréstimos: codigo (PK), codigo_pessoa, codigo_livro, data_empréstimo, data_prevista_devolução, data_efetiva_devolução
+//Emprï¿½stimos: codigo (PK), codigo_pessoa, codigo_livro, data_emprï¿½stimo, data_prevista_devoluï¿½ï¿½o, data_efetiva_devoluï¿½ï¿½o
 struct Emprestimos{
     int idEmprestimo;
     int codigo_pessoa;
@@ -57,7 +58,7 @@ struct Emprestimos{
     char data_efetiva_devolucao[10];
 };
 
-//1) Escreva funções específicas para a leitura dos dados das estruturas.
+//1) Escreva funï¿½ï¿½es especï¿½ficas para a leitura dos dados das estruturas.
 
 void lerCidades(struct Cidades cidade[]){
     for(int i=0; i<10; i++){
@@ -73,11 +74,6 @@ void lerCidades(struct Cidades cidade[]){
     }
 }
 
-void lerPessoas(struct Pessoas pessoa[]){
-    cout<<"---------------------------------------Insercao de dados Cidade---------------------------------------"<<endl;
-    cout<<"Digite o id da pessoa:"<<endl;
-    cin>>
-}
 /*
 struct Pessoas{
     int idPessoa;
@@ -89,8 +85,6 @@ struct Pessoas{
 */
 int main(){
     struct Cidades cidade[100];
-    struct
-    lerCidades(cidade);
 }
 
 
