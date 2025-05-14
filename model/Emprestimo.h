@@ -20,7 +20,7 @@ class Emprestimo {
 
 public:
 
-    Emprestimo::Emprestimo(int id, int codPessoa, int codLivro, const string& dataEmp, const string& dataPrev, const string& dataEfetiva) {
+    Emprestimo(int id, int codPessoa, int codLivro, const string& dataEmp, const string& dataPrev, const string& dataEfetiva) {
         idEmprestimo = id;
         codigo_pessoa = codPessoa;
         codigo_livro = codLivro;

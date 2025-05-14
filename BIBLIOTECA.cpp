@@ -1,31 +1,20 @@
 //BIBLIOTECA.cpp
 
-#include<iostream>
-#include "model/Cidade.h";
-#include "model/Livro.h";
-#include "model/Editora.h";
-#include "model/Autor.h";
-#include "model/Genero.h";
-#include "model/Emprestimo.h";
-#include "model/Pessoa.h";
+#include <iostream>
+#include <string>
+#include "service/AutorService.h"
 
-using namespace std;
+int main() {
+    AutorService service;
 
+    char gab[1] = {'a'};
 
-int main(){
+    Autor a = service.createAutor(1, gab);
 
-    int const TAMANHO = 100;
-
-    Cidade cidades[TAMANHO];
-    Pessoa pessoas[TAMANHO];
-    Editora editoras[TAMANHO];
-    Autor autores[TAMANHO];
-    Genero generos[TAMANHO];
-    Livro livros[TAMANHO];
-    Emprestimo emprestimos[TAMANHO];
-
-
+    std::cout << "ID do autor: " << a.getId() << std::endl;
+    std::cout << "Nome do autor: " << a.getNomeAutor() << std::endl;
 }
+
 
 int converteCharPraInt(char a)
 {

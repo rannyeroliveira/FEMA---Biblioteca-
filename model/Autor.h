@@ -1,54 +1,39 @@
-//
-// Created by Gabriel Isper on 12/05/25.
-//
-
 #ifndef AUTOR_H
 #define AUTOR_H
 
-#include<string>
-using namespace std;
-
+#include <string>
 
 class Autor {
-
     int idAutor;
-    string nomeAutor;
+    char nomeAutor[100];
 
 public:
-    Autor(int id, string nomeAutor)
+    Autor()
     {
-        this->idAutor = id;
-        this->nomeAutor = nomeAutor;
+        idAutor = 0;
+        nomeAutor[0] = '0';
     }
 
-    int getId();
-    void setId(int id);
+    Autor(int id, char nomeAutor[]) {
+        this->idAutor = id;
+        strcpy(this->nomeAutor, nomeAutor);
+    }
 
-    string getNomeAutor();
-    void setNomeAutor(string nomeAutor);
+    int getId() const {
+        return this->idAutor;
+    }
 
+    void setId(int id) {
+        this->idAutor = id;
+    }
+
+    char* getNomeAutor() {
+        return this->nomeAutor;
+    }
+
+    void setNomeAutor(char nomeAutor[]) {
+        strcpy(this->nomeAutor, nomeAutor);
+    }
 };
 
-
-inline int Autor::getId()
-{
-    return this->idAutor;
-}
-
-inline void Autor::setId(int id)
-{
-    this->idAutor = id;
-}
-
-inline string Autor::getNomeAutor()
-{
-    return this->nomeAutor;
-}
-
-inline void Autor::setNomeAutor(string nomeAutor)
-{
-    this->nomeAutor = nomeAutor;
-}
-
-
-#endif //AUTOR_H
+#endif // AUTOR_H

@@ -12,4 +12,4 @@ CMake Error at CMakeLists.txt:1 (cmake_minimum_required):
   CMake 3.30 or higher is required.  You are running version 3.28.1
 
 
--- Configuring incomplete, errors occur
+-- Configuring incomplete, errors occurred!
