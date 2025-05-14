@@ -20,6 +20,24 @@ public:
     {
         return autorRepository.getByID(id);
     }
+
+    void createAutor()
+    {
+        int id;
+        char nome[100];
+
+        cout << "Digite o ID: " << endl;
+        cin >> id;
+
+        cout << "Digite o nome: " << endl;
+        cin.ignore();
+        gets(nome);
+
+        if(autorRepository.existsByID(id))
+        {
+            cout << "Usuario ja existente no banco!!";
+        } else autorRepository.save(Autor(id, nome));
+    }
 };
 
 #endif // AUTOR_SERVICE_H

@@ -2,6 +2,9 @@
 #define AUTOR_H
 
 #include <string>
+#include<stdio.h>
+
+using namespace std;
 
 class Autor {
     int idAutor;
