@@ -4,12 +4,14 @@
 #include <string>
 #include "service/AutorService.h"
 
+
+
 int main() {
     AutorService service;
 
-    char gab[1] = {'a'};
 
-    Autor a = service.createAutor(1, gab);
+
+    Autor a = service.getByID(2);
 
     std::cout << "ID do autor: " << a.getId() << std::endl;
     std::cout << "Nome do autor: " << a.getNomeAutor() << std::endl;
