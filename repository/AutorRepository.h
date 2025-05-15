@@ -72,6 +72,8 @@ public:
         while(contadorTabelaNovosAutores < tamanhoTabelaNovosAutores){
             tabelaGeradaAutores[contadorTabelaGerada++] = tabelaNovosAutores[contadorTabelaNovosAutores++];
         }
+
+        atualizaTabela(tabelaDeAutores, tabelaGeradaAutores, tamanhoTabelaGeradaAutores);
     }
 
 
@@ -80,6 +82,13 @@ private:
     int tamanhoTabelaAutoresAtual = 10;
     Autor tabelaDeAutores[TAMANHO];
 
+    void atualizaTabela(Autor tabela1[], Autor tabela2[], int tam)
+    {
+        for (int i = 0; i < tam; ++i)
+        {
+            tabela1[i] = tabela2[i];
+        }
+    }
 
     int buscaBinaria(int i, int f, Autor a[], int idCliente)
     {
