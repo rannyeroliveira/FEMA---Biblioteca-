@@ -11,6 +11,12 @@ class AutorRepository {
 
 public:
     int static const TAMANHO = 100;
+
+    int getTamanhoAtual()
+    {
+        return this->tamanhoTabelaAutoresAtual;
+    }
+
     AutorRepository() {populaVetor();}
 
     Autor getByID(int id)
@@ -18,16 +24,10 @@ public:
         return tabelaDeAutores[id];
     }
 
-    void save(Autor autor)
-    {
-
-    }
-
     bool existsByID(int id)
     {
         int i = 0;
-        int p = buscaBinaria(i, tamanhoTabelaAutor, tabelaDeAutores, id);
-        tamanhoTabelaAutor++;
+        int p = buscaBinaria(i, tamanhoTabelaAutoresAtual, tabelaDeAutores, id);
 
         if(p >= 0)
         {
@@ -37,9 +37,47 @@ public:
         return false;
     }
 
+
+
+    void inserirAutores(Autor tabelaNovosAutores[], int tamanhoTabelaNovosAutores)
+    {                  // Tabela novos autores = T
+
+        int tamanhoTabelaGeradaAutores = tamanhoTabelaNovosAutores + tamanhoTabelaAutoresAtual;
+
+        // A
+        Autor tabelaGeradaAutores[tamanhoTabelaGeradaAutores];
+
+        // s
+        int contadorTabelaPrincipal = 0;
+
+        // t
+        int contadorTabelaNovosAutores = 0;
+
+        // a
+        int contadorTabelaGerada = 0;
+
+        while(contadorTabelaPrincipal < getTamanhoAtual() && contadorTabelaNovosAutores < tamanhoTabelaGeradaAutores){
+            if(tabelaDeAutores[contadorTabelaPrincipal].getId() < tabelaNovosAutores[contadorTabelaNovosAutores].getId()){
+                tabelaGeradaAutores[contadorTabelaGerada] = tabelaDeAutores[contadorTabelaPrincipal++];
+            }else{
+                tabelaGeradaAutores[contadorTabelaGerada] = tabelaNovosAutores[contadorTabelaNovosAutores++];
+            }
+            contadorTabelaGerada++;
+        }
+
+        while(contadorTabelaPrincipal < getTamanhoAtual()){
+            tabelaGeradaAutores[contadorTabelaGerada++] = tabelaDeAutores[contadorTabelaPrincipal++];
+        }
+
+        while(contadorTabelaNovosAutores < tamanhoTabelaNovosAutores){
+            tabelaGeradaAutores[contadorTabelaGerada++] = tabelaNovosAutores[contadorTabelaNovosAutores++];
+        }
+    }
+
+
 private:
     int pos;
-    int tamanhoTabelaAutor = 10;
+    int tamanhoTabelaAutoresAtual = 10;
     Autor tabelaDeAutores[TAMANHO];
 
 
@@ -74,8 +112,70 @@ private:
         tabelaDeAutores[8] = Autor(9, (char*) "Jorge Luis Borges");
         tabelaDeAutores[9] = Autor(10, (char*) "Leonardo Padura");
     }
-
 };
+
+
+//
+//
+// void insercao(Autor arquivo1[], Autor arquivo2[], int S, int T, int A, struct Autor arquivo3[])
+// {
+//     int a = 0;
+//     int s = 0;
+//     int t = 0;
+//     while(s<S && t<T){
+//         if(arquivo1[s].getId() < arquivo2[t].getId()){
+//             arquivo3[a] = arquivo1[s];
+//             s++;
+//         }else{
+//             arquivo3[a] = arquivo2[t];
+//             t++;
+//         }
+//         a++;
+//     }
+//
+//     while(s < S){
+//         arquivo3[a++] = arquivo1[s++];
+//     }
+//
+//     while(t < T){
+//         arquivo3[a++] = arquivo2[t++];
+//     }
+// }
+
+//
+// void inclusao (Autor S[], int contS, Autor T[], int contT, Autor A[], int &contA)
+// {
+//     int i = 0, j = 0, k = 0; // i (contador de S) j (contador de T) k (contador de A)
+//     for (;i < contS && j < contT;k++){
+//         if (S[i].codigo < T[j].codigo){
+//             A[k].codigo = S[i].codigo;
+//             strcpy (A[k].nome,S[i].nome);
+//             strcpy (A[k].endereco,S[i].endereco);
+//             strcpy (A[k].cidade,S[i].cidade);
+//             strcpy (A[k].uf,S[i].uf);
+//             i++;
+//         }
+//         else {
+//             A[k].codigo = T[j].codigo;
+//             strcpy (A[k].nome,T[j].nome);
+//             strcpy (A[k].endereco,T[j].endereco);
+//             strcpy (A[k].cidade,T[j].cidade);
+//             strcpy (A[k].uf,T[j].uf);
+//             j++;
+//         }
+//     }
+// }
+//
+// void mostrar (struct clientes A[], int contA){
+//     cout << "\n\nLista dos Registros no Arquivo Atualizado" << endl;
+//     for (int i = 0; i < contA; i++){
+//         cout << "\nCodigo: " << A[i].codigo;
+//         cout << "\tNome: " << A[i].nome;
+//         cout << "\tEndereco: " << A[i].endereco;
+//         cout << "\tCidade: " << A[i].cidade;
+//         cout << "\tUF: " << A[i].uf;
+//     }
+// }
 
 
 

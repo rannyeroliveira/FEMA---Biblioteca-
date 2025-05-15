@@ -23,20 +23,77 @@ public:
 
     void createAutor()
     {
-        int id;
-        char nome[100];
 
-        cout << "Digite o ID: " << endl;
-        cin >> id;
+        int totalAutoresInserir;
 
-        cout << "Digite o nome: " << endl;
-        cin.ignore();
-        gets(nome);
+        cout << "Digite quantos autores você deseja cadastrar: ";
+        cin >> totalAutoresInserir;
 
-        if(autorRepository.existsByID(id))
+        int maximoAutoresParaInserir = autorRepository.TAMANHO - autorRepository.getTamanhoAtual();
+
+        if(totalAutoresInserir > maximoAutoresParaInserir)
         {
-            cout << "Usuario ja existente no banco!!";
-        } else autorRepository.save(Autor(id, nome));
+            while (totalAutoresInserir > maximoAutoresParaInserir)
+            {
+                cout << "Tamanho máximo de memória do banco excedido! \nDigite outra quantidade: ";
+                cin >> totalAutoresInserir;
+            }
+        }
+
+        Autor tabelaNovosAutores[totalAutoresInserir];
+
+        for (int i = 0; i < totalAutoresInserir; ++i)
+        {
+            int id;
+            char nome[100];
+
+            cout << "Digite o ID: " << endl;
+            cin >> id;
+
+
+            // Validar tambem se ele repetiu algum ID
+            if (autorRepository.existsByID(id))
+            {
+                do
+                {
+                    cout << "ID " << id << " já utilizado. Digite um novo id: ";
+                    cin >> id;
+                }
+                    while (autorRepository.existsByID(id));
+            }
+
+            cout << "Digite o nome: " << endl;
+            cin.ignore();
+            gets(nome);
+
+            tabelaNovosAutores[i].setId(id);
+            tabelaNovosAutores[i].setNomeAutor(nome);
+        }
+
+        autorRepository.inserirAutores(tabelaNovosAutores, totalAutoresInserir);
+    }
+
+
+
+    void leitura (Autor cli[], int &contador){
+        int i = 0;
+        for (int saida = 1; i < 20 && saida != 0; i++){
+            int id;
+            // char nome[100];
+
+            cout << "\n\nCodigo do Cliente " << (i+1) << ": ";
+            cin >> id;
+
+            cli[i].setId(id);
+
+
+            if (cli[i].getId() > 0){
+                cout << "Nome: ";
+                cin >> cli[i].getNomeAutor();
+            }
+            else saida = 0;
+        }
+        contador = i-1;
     }
 };
 
