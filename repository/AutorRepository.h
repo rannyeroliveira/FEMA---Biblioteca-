@@ -12,6 +12,11 @@ class AutorRepository
 public:
     int static const TAMANHO = 100;
 
+    int getMaximoAutoresParaInserir()
+    {
+        return TAMANHO - getTamanhoAtual();
+    }
+
     int getTamanhoAtual()
     {
         return this->tamanhoTabelaAutoresAtual;
