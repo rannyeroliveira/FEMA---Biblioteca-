@@ -5,20 +5,35 @@
 #include "../repository/AutorRepository.h"
 
 
-class AutorService {
-
+class AutorService
+{
     AutorRepository autorRepository;
+
+    void imprimirAutores(Autor autores[], int t)
+    {
+        for (int i = 0; i < t; ++i)
+        {
+            cout << "ID: " << autores[i].getId() << endl;
+            cout << "Nome: " << autores[i].getNomeAutor() << endl;
+            cout << endl;
+        }
+    }
+
+    void imprimirAutor(int id)
+    {
+        Autor a = autorRepository.getByID(id);
+        if(a.getNomeAutor() != "")
+        {
+            cout << a.getNomeAutor();
+            return;
+        }
+    }
 
 public:
     AutorService() {}
 
     Autor createAutor(int id, char nomeAutor[]) {
         return Autor(id, nomeAutor);
-    }
-
-    Autor getByID(int id)
-    {
-        return autorRepository.getByID(id);
     }
 
     void createAutor()
@@ -59,7 +74,7 @@ public:
                     cout << "ID " << id << " já utilizado. Digite um novo id: ";
                     cin >> id;
                 }
-                    while (autorRepository.existsByID(id));
+                while (autorRepository.existsByID(id));
             }
 
             cout << "Digite o nome: " << endl;
@@ -73,27 +88,26 @@ public:
         autorRepository.inserirAutores(tabelaNovosAutores, totalAutoresInserir);
     }
 
-
-
-    void leitura (Autor cli[], int &contador){
-        int i = 0;
-        for (int saida = 1; i < 20 && saida != 0; i++){
-            int id;
-            // char nome[100];
-
-            cout << "\n\nCodigo do Cliente " << (i+1) << ": ";
-            cin >> id;
-
-            cli[i].setId(id);
-
-
-            if (cli[i].getId() > 0){
-                cout << "Nome: ";
-                cin >> cli[i].getNomeAutor();
-            }
-            else saida = 0;
+    void deleteAutoresByID(int TabelaAutoresRemovidos[], int tamanhoTabelaAutoresRemovidos){
+        {
+            autorRepository.deleteByID(TabelaAutoresRemovidos, tamanhoTabelaAutoresRemovidos);
         }
-        contador = i-1;
+
+
+    }
+
+    void getByID(int id)
+    {
+        Autor a = autorRepository.getByID(id);
+
+        Autor v[] = {a};
+
+        imprimirAutores(v, 1);
+    }
+
+    Autor* getAllAutores()
+    {
+        imprimirAutores(autorRepository.getAll(), autorRepository.getTamanhoAtual());
     }
 };
 

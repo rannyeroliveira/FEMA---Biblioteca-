@@ -8,16 +8,9 @@
 int main() {
     AutorService service;
 
-    // Autor a = Autor(1, (char*) "a1");
+    // service.getAllAutores();
 
-    service.createAutor();
-
-
-
-    // Autor a = service.getByID(2);
-
-    // std::cout << "ID do autor: " << a.getId() << std::endl;
-    // std::cout << "Nome do autor: " << a.getNomeAutor() << std::endl;
+    service.getByID(1);
 }
 
 

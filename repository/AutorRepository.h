@@ -7,8 +7,8 @@
 
 
 
-class AutorRepository {
-
+class AutorRepository
+{
 public:
     int static const TAMANHO = 100;
 
@@ -17,11 +17,24 @@ public:
         return this->tamanhoTabelaAutoresAtual;
     }
 
+    Autor* getAll()
+    {
+        return tabelaDeAutores;
+    }
+
     AutorRepository() {populaVetor();}
 
     Autor getByID(int id)
     {
-        return tabelaDeAutores[id];
+        int i = 0;
+        int a = buscaBinaria(i, tamanhoTabelaAutoresAtual, tabelaDeAutores, id);
+        if(a > 0)
+        {
+            return tabelaDeAutores[a];
+        }
+
+        cout << "Autor não encontrado! Retornando autor vazio.";
+        return Autor();
     }
 
     bool existsByID(int id)
@@ -36,8 +49,6 @@ public:
 
         return false;
     }
-
-
 
     void inserirAutores(Autor tabelaNovosAutores[], int tamanhoTabelaNovosAutores)
     {                  // Tabela novos autores = T
@@ -75,6 +86,60 @@ public:
 
         atualizaTabela(tabelaDeAutores, tabelaGeradaAutores, tamanhoTabelaGeradaAutores);
     }
+
+    // Da pra trocar e fazer um array, tipo se ele mandar 10 autores a gente atualiza os 10
+    // porém isso adiciona mais complexidade
+    void updateAutor(char nomeAutor[], int id)
+    {
+        int i = 0;
+
+        int pos = buscaBinaria(i, tamanhoTabelaAutoresAtual, tabelaDeAutores, id);
+
+        if(pos < 0)
+        {
+            cout << "O Autor com id " << id << " não existe na base de dados!";
+            return;
+        }
+
+        tabelaDeAutores[pos] = Autor(id, nomeAutor);
+        cout << "Autor atualizado com sucesso!" << endl;
+    }
+
+
+    void deleteByID (int TabelaAutoresRemovidos[], int tamanhoTabelaAutoresRemovidos){
+
+        // Clientes S = tabelaDeAutores
+        // T = IDs a remover
+        // A = Tabela atualizada sem Autores que foram deletados
+
+        // contA
+        int tamanhoTabelaGeradaAutores = tamanhoTabelaAutoresAtual - tamanhoTabelaAutoresRemovidos;
+
+        Autor tabelaGeradaAutores[tamanhoTabelaGeradaAutores];
+
+        int i = 0, j = 0, k = 0; // i (contador de S) j (contador de T) k (contador de A)
+
+        for (;j < tamanhoTabelaAutoresRemovidos; i++){
+            if (tabelaDeAutores[i].getId() != TabelaAutoresRemovidos[j]){
+                tabelaGeradaAutores[k].setId(tabelaDeAutores[i].getId());
+                strcpy (tabelaGeradaAutores[k].getNomeAutor(),tabelaDeAutores[i].getNomeAutor());
+                k++;
+            }
+            else {
+                j++;
+            }
+        }
+        while (i < tamanhoTabelaAutoresAtual){
+            tabelaGeradaAutores[k].setId(tabelaDeAutores[i].getId());
+            strcpy (tabelaGeradaAutores[k].getNomeAutor(),tabelaDeAutores[i].getNomeAutor());
+            i++;
+            k++;
+        }
+
+        tamanhoTabelaAutoresAtual = k;
+    }
+
+
 
 
 private:
@@ -122,69 +187,6 @@ private:
         tabelaDeAutores[9] = Autor(10, (char*) "Leonardo Padura");
     }
 };
-
-
-//
-//
-// void insercao(Autor arquivo1[], Autor arquivo2[], int S, int T, int A, struct Autor arquivo3[])
-// {
-//     int a = 0;
-//     int s = 0;
-//     int t = 0;
-//     while(s<S && t<T){
-//         if(arquivo1[s].getId() < arquivo2[t].getId()){
-//             arquivo3[a] = arquivo1[s];
-//             s++;
-//         }else{
-//             arquivo3[a] = arquivo2[t];
-//             t++;
-//         }
-//         a++;
-//     }
-//
-//     while(s < S){
-//         arquivo3[a++] = arquivo1[s++];
-//     }
-//
-//     while(t < T){
-//         arquivo3[a++] = arquivo2[t++];
-//     }
-// }
-
-//
-// void inclusao (Autor S[], int contS, Autor T[], int contT, Autor A[], int &contA)
-// {
-//     int i = 0, j = 0, k = 0; // i (contador de S) j (contador de T) k (contador de A)
-//     for (;i < contS && j < contT;k++){
-//         if (S[i].codigo < T[j].codigo){
-//             A[k].codigo = S[i].codigo;
-//             strcpy (A[k].nome,S[i].nome);
-//             strcpy (A[k].endereco,S[i].endereco);
-//             strcpy (A[k].cidade,S[i].cidade);
-//             strcpy (A[k].uf,S[i].uf);
-//             i++;
-//         }
-//         else {
-//             A[k].codigo = T[j].codigo;
-//             strcpy (A[k].nome,T[j].nome);
-//             strcpy (A[k].endereco,T[j].endereco);
-//             strcpy (A[k].cidade,T[j].cidade);
-//             strcpy (A[k].uf,T[j].uf);
-//             j++;
-//         }
-//     }
-// }
-//
-// void mostrar (struct clientes A[], int contA){
-//     cout << "\n\nLista dos Registros no Arquivo Atualizado" << endl;
-//     for (int i = 0; i < contA; i++){
-//         cout << "\nCodigo: " << A[i].codigo;
-//         cout << "\tNome: " << A[i].nome;
-//         cout << "\tEndereco: " << A[i].endereco;
-//         cout << "\tCidade: " << A[i].cidade;
-//         cout << "\tUF: " << A[i].uf;
-//     }
-// }
 
 
 
