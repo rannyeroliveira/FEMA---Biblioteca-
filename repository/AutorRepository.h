@@ -28,7 +28,7 @@ public:
     {
         int i = 0;
         int a = buscaBinaria(i, tamanhoTabelaAutoresAtual, tabelaDeAutores, id);
-        if(a > 0)
+        if(a >= 0)
         {
             return tabelaDeAutores[a];
         }
