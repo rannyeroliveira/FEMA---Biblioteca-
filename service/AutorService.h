@@ -44,11 +44,9 @@ public:
         cout << "Digite quantos autores você deseja cadastrar: ";
         cin >> totalAutoresInserir;
 
-        int maximoAutoresParaInserir = autorRepository.TAMANHO - autorRepository.getTamanhoAtual();
-
-        if(totalAutoresInserir > maximoAutoresParaInserir)
+        if(totalAutoresInserir > autorRepository.getMaximoAutoresParaInserir())
         {
-            while (totalAutoresInserir > maximoAutoresParaInserir)
+            while (totalAutoresInserir > autorRepository.getMaximoAutoresParaInserir())
             {
                 cout << "Tamanho máximo de memória do banco excedido! \nDigite outra quantidade: ";
                 cin >> totalAutoresInserir;
