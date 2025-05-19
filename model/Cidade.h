@@ -1,54 +1,52 @@
-//
-// Created by Gabriel Isper on 12/05/25.
-//
 
 #ifndef CIDADE_H
 #define CIDADE_H
 
+#include <cstring>
 
-#include <string>
 using namespace std;
 
 class Cidade {
-
     int idCidade;
-    string descricao;
-    string UF;
+    char descricao[100];
+    char UF[2];
 
 public:
-
-    Cidade(int id, const string& desc, const string& uf) {
-        idCidade = id;
-        descricao = desc;
-        UF = uf;
+    Cidade() {
+        idCidade = 0;
+        strcpy(this->descricao, "");
+        strcpy(this->UF, "");
     }
 
-
-    int getIdCidade() const {
-        return idCidade;
+    Cidade(const int id, const char descricao[], const char UF[]) {
+        this->idCidade = id;
+        strcpy(this->descricao, descricao);
+        strcpy(this->UF, UF);
     }
 
-    string getDescricao() const {
-        return descricao;
+    int getId() const {
+        return this->idCidade;
     }
 
-    string getUF() const {
-        return UF;
+    void setId(const int id) {
+        this->idCidade = id;
     }
 
-
-    void setIdCidade(int id) {
-        idCidade = id;
+    const char* getDescricao() {
+        return this->descricao;
     }
 
-    void setDescricao(const string& desc) {
-        descricao = desc;
+    void setDescricao(const char descricao[]) {
+        strcpy(this->descricao, descricao);
     }
 
-    void setUF(const string& uf) {
-        UF = uf;
+    const char* getUF() {
+        return this->UF;
+    }
+
+    void setUF(const char UF[]) {
+        strcpy(this->UF, UF);
     }
 };
 
-
-#endif //CIDADE_H
+#endif // CIDADE_H

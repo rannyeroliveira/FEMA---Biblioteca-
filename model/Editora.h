@@ -1,57 +1,52 @@
-//
-// Created by Gabriel Isper on 12/05/25.
-//
-
 #ifndef EDITORA_H
 #define EDITORA_H
 
+#include <cstring>
 
-
-#include <string>
 using namespace std;
 
 class Editora {
-
     int idEditora;
-    string nomeEdtr;
+    char nomeEdtr[100];
     int codigo_cidade;
 
 public:
-
-    Editora(int id, const string& nome, int codCidade) {
-        idEditora = id;
-        nomeEdtr = nome;
-        codigo_cidade = codCidade;
+    Editora() {
+        idEditora = 0;
+        strcpy(this->nomeEdtr, "");
+        codigo_cidade = 0;
     }
 
-
-    int getIdEditora() const {
-        return idEditora;
+    Editora(const int id, const char nomeEdtr[], const int codigoCidade) {
+        this->idEditora = id;
+        strcpy(this->nomeEdtr, nomeEdtr);
+        this->codigo_cidade = codigoCidade;
     }
 
-    string getNomeEdtr() const {
-        return nomeEdtr;
+    int getId() const {
+        return this->idEditora;
+    }
+
+    void setId(const int id) {
+        this->idEditora = id;
+    }
+
+    const char* getNomeEdtr() {
+        return this->nomeEdtr;
+    }
+
+    void setNomeEdtr(const char nomeEdtr[]) {
+        strcpy(this->nomeEdtr, nomeEdtr);
     }
 
     int getCodigoCidade() const {
-        return codigo_cidade;
+        return this->codigo_cidade;
     }
 
-
-    void setIdEditora(int id) {
-        idEditora = id;
+    void setCodigoCidade(const int codigoCidade) {
+        this->codigo_cidade = codigoCidade;
     }
 
-    void setNomeEdtr(const string& nome) {
-        nomeEdtr = nome;
-    }
-
-    void setCodigoCidade(int codCidade) {
-        codigo_cidade = codCidade;
-    }
 };
 
-
-
-
-#endif //EDITORA_H
+#endif // EDITORA_H

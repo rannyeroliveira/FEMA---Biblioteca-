@@ -1,72 +1,48 @@
-//
-// Created by Gabriel Isper on 12/05/25.
-//
-
 #ifndef PESSOA_H
 #define PESSOA_H
 
+#include <cstring>
 
-#include <string>
 using namespace std;
 
 class Pessoa {
-
     int idPessoa;
-    string nomePessoas;
-    string cpf;
-    string endereco;
+    char nomePessoas[100];
+    char cpf[15];
+    char endereco[100];
     int codigo_cidade;
 
 public:
-    Pessoa(int id, const string& nome, const string& documento, const string& end, int codCidade) {
-        idPessoa = id;
-        nomePessoas = nome;
-        cpf = documento;
-        endereco = end;
-        codigo_cidade = codCidade;
+    Pessoa() {
+        idPessoa = 0;
+        strcpy(this->nomePessoas, "");
+        strcpy(this->cpf, "");
+        strcpy(this->endereco, "");
+        codigo_cidade = 0;
     }
 
-    int getIdPessoa() const {
-        return idPessoa;
+    Pessoa(int id, const char nome[], const char cpf[], const char endereco[], int codCidade) {
+        this->idPessoa = id;
+        strcpy(this->nomePessoas, nome);
+        strcpy(this->cpf, cpf);
+        strcpy(this->endereco, endereco);
+        this->codigo_cidade = codCidade;
     }
 
-    string getNomePessoas() const {
-        return nomePessoas;
-    }
+    int getId() const { return idPessoa; }
+    void setId(int id) { idPessoa = id; }
 
-    string getCpf() const {
-        return cpf;
-    }
+    const char* getNomePessoas() { return nomePessoas; }
+    void setNomePessoas(const char nome[]) { strcpy(nomePessoas, nome); }
 
-    string getEndereco() const {
-        return endereco;
-    }
+    const char* getCpf() { return cpf; }
+    void setCpf(const char c[]) { strcpy(cpf, c); }
 
-    int getCodigoCidade() const {
-        return codigo_cidade;
-    }
+    const char* getEndereco() { return endereco; }
+    void setEndereco(const char e[]) { strcpy(endereco, e); }
 
-    void setIdPessoa(int id) {
-        idPessoa = id;
-    }
-
-    void setNomePessoas(const string& nome) {
-        nomePessoas = nome;
-    }
-
-    void setCpf(const string& documento) {
-        cpf = documento;
-    }
-
-    void setEndereco(const string& end) {
-        endereco = end;
-    }
-
-    void setCodigoCidade(int codCidade) {
-        codigo_cidade = codCidade;
-    }
+    int getCodigoCidade() const { return codigo_cidade; }
+    void setCodigoCidade(int cod) { codigo_cidade = cod; }
 };
 
-
-
-#endif //PESSOA_H
+#endif // PESSOA_H

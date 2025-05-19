@@ -1,82 +1,54 @@
-//
-// Created by Gabriel Isper on 12/05/25.
-//
-
 #ifndef LIVRO_H
 #define LIVRO_H
 
+#include <cstring>
 
-#include <string>
 using namespace std;
 
 class Livro {
-private:
     int idLivro;
-    string nomeLivro;
+    char nomeLivro[100];
     int codigo_editora;
     int codigo_autor;
     int codigo_genero;
     bool disponivel;
 
 public:
-    Livro(int id, const string& nome, int codEditora, int codAutor, int codGenero, bool disp) {
-        idLivro = id;
-        nomeLivro = nome;
-        codigo_editora = codEditora;
-        codigo_autor = codAutor;
-        codigo_genero = codGenero;
-        disponivel = disp;
+    Livro() {
+        idLivro = 0;
+        strcpy(this->nomeLivro, "");
+        codigo_editora = 0;
+        codigo_autor = 0;
+        codigo_genero = 0;
+        disponivel = true;
     }
 
-    int getIdLivro() const {
-        return idLivro;
+    Livro(int id, const char nome[], int codEditora, int codAutor, int codGenero, bool disp) {
+        this->idLivro = id;
+        strcpy(this->nomeLivro, nome);
+        this->codigo_editora = codEditora;
+        this->codigo_autor = codAutor;
+        this->codigo_genero = codGenero;
+        this->disponivel = disp;
     }
 
-    string getNomeLivro() const {
-        return nomeLivro;
-    }
+    int getId() const { return idLivro; }
+    void setId(int id) { idLivro = id; }
 
-    int getCodigoEditora() const {
-        return codigo_editora;
-    }
+    const char* getNomeLivro() { return nomeLivro; }
+    void setNomeLivro(const char nome[]) { strcpy(nomeLivro, nome); }
 
-    int getCodigoAutor() const {
-        return codigo_autor;
-    }
+    int getCodigoEditora() const { return codigo_editora; }
+    void setCodigoEditora(int cod) { codigo_editora = cod; }
 
-    int getCodigoGenero() const {
-        return codigo_genero;
-    }
+    int getCodigoAutor() const { return codigo_autor; }
+    void setCodigoAutor(int cod) { codigo_autor = cod; }
 
-    bool isDisponivel() const {
-        return disponivel;
-    }
+    int getCodigoGenero() const { return codigo_genero; }
+    void setCodigoGenero(int cod) { codigo_genero = cod; }
 
-    void setIdLivro(int id) {
-        idLivro = id;
-    }
-
-    void setNomeLivro(const string& nome) {
-        nomeLivro = nome;
-    }
-
-    void setCodigoEditora(int codEditora) {
-        codigo_editora = codEditora;
-    }
-
-    void setCodigoAutor(int codAutor) {
-        codigo_autor = codAutor;
-    }
-
-    void setCodigoGenero(int codGenero) {
-        codigo_genero = codGenero;
-    }
-
-    void setDisponivel(bool disp) {
-        disponivel = disp;
-    }
+    bool isDisponivel() const { return disponivel; }
+    void setDisponivel(bool disp) { disponivel = disp; }
 };
 
-
-
-#endif //LIVRO_H
+#endif // LIVRO_H

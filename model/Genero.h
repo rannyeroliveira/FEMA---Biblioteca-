@@ -1,42 +1,30 @@
-//
-// Created by Gabriel Isper on 12/05/25.
-//
-
 #ifndef GENERO_H
 #define GENERO_H
 
+#include <cstring>
 
-#include <string>
 using namespace std;
 
 class Genero {
-private:
     int idGenero;
-    string descricao;
+    char descricao[100];
 
 public:
-    Genero(int id, const string& desc) {
-        idGenero = id;
-        descricao = desc;
+    Genero() {
+        idGenero = 0;
+        strcpy(this->descricao, "");
     }
 
-    int getIdGenero() const {
-        return idGenero;
+    Genero(int id, const char descricao[]) {
+        this->idGenero = id;
+        strcpy(this->descricao, descricao);
     }
 
-    string getDescricao() const {
-        return descricao;
-    }
+    int getId() const { return idGenero; }
+    void setId(int id) { idGenero = id; }
 
-    void setIdGenero(int id) {
-        idGenero = id;
-    }
-
-    void setDescricao(const string& desc) {
-        descricao = desc;
-    }
+    const char* getDescricao() { return descricao; }
+    void setDescricao(const char desc[]) { strcpy(descricao, desc); }
 };
 
-
-
-#endif //GENERO_H
+#endif // GENERO_H

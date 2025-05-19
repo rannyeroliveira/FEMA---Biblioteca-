@@ -1,84 +1,54 @@
-//
-// Created by Gabriel Isper on 12/05/25.
-//
-
 #ifndef EMPRESTIMO_H
 #define EMPRESTIMO_H
 
+#include <cstring>
 
-#include <string>
 using namespace std;
 
 class Emprestimo {
-
     int idEmprestimo;
     int codigo_pessoa;
     int codigo_livro;
-    string data_emprestimo;
-    string data_prevista_devolucao;
-    string data_efetiva_devolucao;
+    char data_emprestimo[11];
+    char data_prevista_devolucao[11];
+    char data_efetiva_devolucao[11];
 
 public:
-
-    Emprestimo(int id, int codPessoa, int codLivro, const string& dataEmp, const string& dataPrev, const string& dataEfetiva) {
-        idEmprestimo = id;
-        codigo_pessoa = codPessoa;
-        codigo_livro = codLivro;
-        data_emprestimo = dataEmp;
-        data_prevista_devolucao = dataPrev;
-        data_efetiva_devolucao = dataEfetiva;
+    Emprestimo() {
+        idEmprestimo = 0;
+        codigo_pessoa = 0;
+        codigo_livro = 0;
+        strcpy(this->data_emprestimo, "");
+        strcpy(this->data_prevista_devolucao, "");
+        strcpy(this->data_efetiva_devolucao, "");
     }
 
-
-    int getIdEmprestimo() const {
-        return idEmprestimo;
+    Emprestimo(int id, int codPessoa, int codLivro, const char dataEmp[], const char dataPrev[], const char dataEfetiva[]) {
+        this->idEmprestimo = id;
+        this->codigo_pessoa = codPessoa;
+        this->codigo_livro = codLivro;
+        strcpy(this->data_emprestimo, dataEmp);
+        strcpy(this->data_prevista_devolucao, dataPrev);
+        strcpy(this->data_efetiva_devolucao, dataEfetiva);
     }
 
-    int getCodigoPessoa() const {
-        return codigo_pessoa;
-    }
+    int getId() const { return idEmprestimo; }
+    void setId(int id) { idEmprestimo = id; }
 
-    int getCodigoLivro() const {
-        return codigo_livro;
-    }
+    int getCodigoPessoa() const { return codigo_pessoa; }
+    void setCodigoPessoa(int cod) { codigo_pessoa = cod; }
 
-    string getDataEmprestimo() const {
-        return data_emprestimo;
-    }
+    int getCodigoLivro() const { return codigo_livro; }
+    void setCodigoLivro(int cod) { codigo_livro = cod; }
 
-    string getDataPrevistaDevolucao() const {
-        return data_prevista_devolucao;
-    }
+    const char* getDataEmprestimo() { return data_emprestimo; }
+    void setDataEmprestimo(const char data[]) { strcpy(data_emprestimo, data); }
 
-    string getDataEfetivaDevolucao() const {
-        return data_efetiva_devolucao;
-    }
+    const char* getDataPrevistaDevolucao() { return data_prevista_devolucao; }
+    void setDataPrevistaDevolucao(const char data[]) { strcpy(data_prevista_devolucao, data); }
 
-    void setIdEmprestimo(int id) {
-        idEmprestimo = id;
-    }
-
-    void setCodigoPessoa(int codPessoa) {
-        codigo_pessoa = codPessoa;
-    }
-
-    void setCodigoLivro(int codLivro) {
-        codigo_livro = codLivro;
-    }
-
-    void setDataEmprestimo(const string& dataEmp) {
-        data_emprestimo = dataEmp;
-    }
-
-    void setDataPrevistaDevolucao(const string& dataPrev) {
-        data_prevista_devolucao = dataPrev;
-    }
-
-    void setDataEfetivaDevolucao(const string& dataEfetiva) {
-        data_efetiva_devolucao = dataEfetiva;
-    }
+    const char* getDataEfetivaDevolucao() { return data_efetiva_devolucao; }
+    void setDataEfetivaDevolucao(const char data[]) { strcpy(data_efetiva_devolucao, data); }
 };
 
-
-
-#endif //EMPRESTIMO_H
+#endif // EMPRESTIMO_H
