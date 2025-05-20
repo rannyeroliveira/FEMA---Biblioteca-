@@ -2,29 +2,26 @@
 #define PESSOA_H
 
 #include <cstring>
-
-using namespace std;
+#include "CPF.h"
 
 class Pessoa {
+private:
     int idPessoa;
-    char nomePessoas[100];
-    char cpf[15];
+    char nomePessoa[100];
+    CPF cpf;
     char endereco[100];
     int codigo_cidade;
 
 public:
-    Pessoa() {
-        idPessoa = 0;
-        strcpy(this->nomePessoas, "");
-        strcpy(this->cpf, "");
-        strcpy(this->endereco, "");
-        codigo_cidade = 0;
+    Pessoa() : idPessoa(0), codigo_cidade(0), cpf() {
+        strcpy(nomePessoa, "");
+        strcpy(endereco, "");
     }
 
-    Pessoa(int id, const char nome[], const char cpf[], const char endereco[], int codCidade) {
+    Pessoa(int id,char nome[], char cpfStr[], const char endereco[], int codCidade){
         this->idPessoa = id;
-        strcpy(this->nomePessoas, nome);
-        strcpy(this->cpf, cpf);
+        strcpy(this->nomePessoa, nome);
+        this->cpf= CPF(cpfStr);
         strcpy(this->endereco, endereco);
         this->codigo_cidade = codCidade;
     }
@@ -32,17 +29,25 @@ public:
     int getId() const { return idPessoa; }
     void setId(int id) { idPessoa = id; }
 
-    const char* getNomePessoas() { return nomePessoas; }
-    void setNomePessoas(const char nome[]) { strcpy(nomePessoas, nome); }
+    const char* getNomePessoa() const { return nomePessoa; }
+    void setNomePessoa(const char nome[]) {
+        strncpy(nomePessoa, nome, sizeof(nomePessoa) - 1);
+        nomePessoa[sizeof(nomePessoa) - 1] = '\0';
+    }
 
-    const char* getCpf() { return cpf; }
-    void setCpf(const char c[]) { strcpy(cpf, c); }
-
-    const char* getEndereco() { return endereco; }
-    void setEndereco(const char e[]) { strcpy(endereco, e); }
+    const char* getEndereco() const { return endereco; }
+    void setEndereco(const char e[]) {
+        strncpy(endereco, e, sizeof(endereco) - 1);
+        endereco[sizeof(endereco) - 1] = '\0';
+    }
 
     int getCodigoCidade() const { return codigo_cidade; }
     void setCodigoCidade(int cod) { codigo_cidade = cod; }
+
+    void setCpf( char* cpfStr) { cpf.setCPF(cpfStr); }
+    const char* getCpf() const { return cpf.getCPF(); }
+
+
 };
 
 #endif // PESSOA_H
