@@ -5,6 +5,8 @@
 #ifndef EMPRESTIMOREPOSITORY_H
 #define EMPRESTIMOREPOSITORY_H
 
+#include <ctime>
+
 #include "../model/Emprestimo.h"
 
 
@@ -16,6 +18,11 @@ public:
     int getMaximoEmprestimosParaInserir()
     {
         return TAMANHO - getTamanhoAtual();
+    }
+
+    int getUltimoIdCadastrado()
+    {
+        return tabelaDeEmprestimos[getTamanhoAtual()].getId();
     }
 
     int getTamanhoAtual()
@@ -86,7 +93,7 @@ public:
         atualizaTabela(tabelaDeEmprestimos, tabelaGeradaEmprestimos, tamanhoTabelaGeradaEmprestimos);
     }
 
-    void updateEmprestimo(int id, int codPessoa, int codLivro, const char dataEmp[], const char dataPrev[], const char dataEfetiva[])
+    void updateEmprestimo(int id, int codPessoa, int codLivro, tm dataEmp, tm dataPrev, tm dataEfetiva)
     {
         int i = 0;
 
@@ -116,8 +123,8 @@ public:
                 tabelaGeradaEmprestimos[k].setCodigoPessoa(tabelaDeEmprestimos[i].getCodigoPessoa());
                 tabelaGeradaEmprestimos[k].setCodigoLivro(tabelaDeEmprestimos[i].getCodigoLivro());
                 tabelaGeradaEmprestimos[k].setDataEmprestimo(tabelaDeEmprestimos[i].getDataEmprestimo());
-                tabelaGeradaEmprestimos[k].setDataPrevistaDevolucao(tabelaDeEmprestimos[i].getDataPrevistaDevolucao());
-                tabelaGeradaEmprestimos[k].setDataEfetivaDevolucao(tabelaDeEmprestimos[i].getDataEfetivaDevolucao());
+                tabelaGeradaEmprestimos[k].setDataPrevista(tabelaDeEmprestimos[i].getDataPrevista());
+                tabelaGeradaEmprestimos[k].setDataEfetiva(tabelaDeEmprestimos[i].getDataEfetiva());
                 k++;
             }
             else {
@@ -129,8 +136,8 @@ public:
             tabelaGeradaEmprestimos[k].setCodigoPessoa(tabelaDeEmprestimos[i].getCodigoPessoa());
             tabelaGeradaEmprestimos[k].setCodigoLivro(tabelaDeEmprestimos[i].getCodigoLivro());
             tabelaGeradaEmprestimos[k].setDataEmprestimo(tabelaDeEmprestimos[i].getDataEmprestimo());
-            tabelaGeradaEmprestimos[k].setDataPrevistaDevolucao(tabelaDeEmprestimos[i].getDataPrevistaDevolucao());
-            tabelaGeradaEmprestimos[k].setDataEfetivaDevolucao(tabelaDeEmprestimos[i].getDataEfetivaDevolucao());
+            tabelaGeradaEmprestimos[k].setDataPrevista(tabelaDeEmprestimos[i].getDataPrevista());
+            tabelaGeradaEmprestimos[k].setDataEfetiva(tabelaDeEmprestimos[i].getDataEfetiva());
             i++;
             k++;
         }
@@ -169,19 +176,30 @@ private:
         return -1;
     }
 
+    // Cria uma struct tm a partir de dia, mês, ano
+    tm criarData(int dia, int mes, int ano) {
+        tm data{};
+        data.tm_mday = dia;
+        data.tm_mon = mes - 1;      // tm_mon vai de 0 a 11
+        data.tm_year = ano - 1900;  // tm_year é anos desde 1900
+        return data;
+    }
+
+
     void populaVetor()
     {
-        tabelaDeEmprestimos[0] = Emprestimo(1, 1001, 2001, "01/01/2025", "15/01/2025", "");
-        tabelaDeEmprestimos[1] = Emprestimo(2, 1002, 2002, "02/01/2025", "16/01/2025", "");
-        tabelaDeEmprestimos[2] = Emprestimo(3, 1003, 2003, "03/01/2025", "17/01/2025", "");
-        tabelaDeEmprestimos[3] = Emprestimo(4, 1004, 2004, "04/01/2025", "18/01/2025", "");
-        tabelaDeEmprestimos[4] = Emprestimo(5, 1005, 2005, "05/01/2025", "19/01/2025", "");
-        tabelaDeEmprestimos[5] = Emprestimo(6, 1006, 2006, "06/01/2025", "20/01/2025", "");
-        tabelaDeEmprestimos[6] = Emprestimo(7, 1007, 2007, "07/01/2025", "21/01/2025", "");
-        tabelaDeEmprestimos[7] = Emprestimo(8, 1008, 2008, "08/01/2025", "22/01/2025", "");
-        tabelaDeEmprestimos[8] = Emprestimo(9, 1009, 2009, "09/01/2025", "23/01/2025", "");
-        tabelaDeEmprestimos[9] = Emprestimo(10, 1010, 2010, "10/01/2025", "24/01/2025", "");
+        tabelaDeEmprestimos[0] = Emprestimo(1, 1001, 2001, criarData(1, 2, 2025), criarData(15, 1, 2025), {});
+        tabelaDeEmprestimos[1] = Emprestimo(2, 1002, 2002, criarData(2, 1, 2025), criarData(16, 1, 2025), {});
+        tabelaDeEmprestimos[2] = Emprestimo(3, 1003, 2003, criarData(3, 1, 2025), criarData(17, 1, 2025), {});
+        tabelaDeEmprestimos[3] = Emprestimo(4, 1004, 2004, criarData(4, 1, 2025), criarData(18, 1, 2025), {});
+        tabelaDeEmprestimos[4] = Emprestimo(5, 1005, 2005, criarData(5, 1, 2025), criarData(19, 1, 2025), {});
+        tabelaDeEmprestimos[5] = Emprestimo(6, 1006, 2006, criarData(6, 1, 2025), criarData(20, 1, 2025), {});
+        tabelaDeEmprestimos[6] = Emprestimo(7, 1007, 2007, criarData(7, 1, 2025), criarData(21, 1, 2025), {});
+        tabelaDeEmprestimos[7] = Emprestimo(8, 1008, 2008, criarData(8, 1, 2025), criarData(22, 1, 2025), {});
+        tabelaDeEmprestimos[8] = Emprestimo(9, 1009, 2009, criarData(9, 1, 2025), criarData(23, 1, 2025), {});
+        tabelaDeEmprestimos[9] = Emprestimo(10, 1010, 2010, criarData(10, 1, 2025), criarData(24, 1, 2025), {});
     }
+
 };
 
 #endif // EMPRESTIMOREPOSITORY_H

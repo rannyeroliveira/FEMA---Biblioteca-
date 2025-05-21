@@ -2,6 +2,7 @@
 #define EMPRESTIMO_H
 
 #include <cstring>
+#include <ctime>
 
 using namespace std;
 
@@ -9,27 +10,26 @@ class Emprestimo {
     int idEmprestimo;
     int codigo_pessoa;
     int codigo_livro;
-    char data_emprestimo[11];
-    char data_prevista_devolucao[11];
-    char data_efetiva_devolucao[11];
+    tm data_emprestimo;
+    tm data_prevista_devolucao;
+    tm data_efetiva_devolucao;
 
 public:
     Emprestimo() {
         idEmprestimo = 0;
         codigo_pessoa = 0;
         codigo_livro = 0;
-        strcpy(this->data_emprestimo, "");
-        strcpy(this->data_prevista_devolucao, "");
-        strcpy(this->data_efetiva_devolucao, "");
     }
 
-    Emprestimo(int id, int codPessoa, int codLivro, const char dataEmp[], const char dataPrev[], const char dataEfetiva[]) {
-        this->idEmprestimo = id;
-        this->codigo_pessoa = codPessoa;
-        this->codigo_livro = codLivro;
-        strcpy(this->data_emprestimo, dataEmp);
-        strcpy(this->data_prevista_devolucao, dataPrev);
-        strcpy(this->data_efetiva_devolucao, dataEfetiva);
+    Emprestimo(int id_emprestimo, int codigo_pessoa, int codigo_livro, const tm& data_emprestimo,
+        const tm& data_prevista_devolucao, const tm& data_efetiva_devolucao)
+        : idEmprestimo(id_emprestimo),
+          codigo_pessoa(codigo_pessoa),
+          codigo_livro(codigo_livro),
+          data_emprestimo(data_emprestimo),
+          data_prevista_devolucao(data_prevista_devolucao),
+          data_efetiva_devolucao(data_efetiva_devolucao)
+    {
     }
 
     int getId() const { return idEmprestimo; }
@@ -41,14 +41,14 @@ public:
     int getCodigoLivro() const { return codigo_livro; }
     void setCodigoLivro(int cod) { codigo_livro = cod; }
 
-    const char* getDataEmprestimo() { return data_emprestimo; }
-    void setDataEmprestimo(const char data[]) { strcpy(data_emprestimo, data); }
+    tm getDataEmprestimo() const {return data_emprestimo;}
+    void setDataEmprestimo(tm data) {this->data_emprestimo = data;}
 
-    const char* getDataPrevistaDevolucao() { return data_prevista_devolucao; }
-    void setDataPrevistaDevolucao(const char data[]) { strcpy(data_prevista_devolucao, data); }
+    tm getDataPrevista() const {return data_prevista_devolucao;}
+    void setDataPrevista(tm data) {this->data_prevista_devolucao = data;}
 
-    const char* getDataEfetivaDevolucao() { return data_efetiva_devolucao; }
-    void setDataEfetivaDevolucao(const char data[]) { strcpy(data_efetiva_devolucao, data); }
+    tm getDataEfetiva() const {return data_efetiva_devolucao;}
+    void setDataEfetiva(tm data) {this->data_efetiva_devolucao = data;}
 };
 
 #endif // EMPRESTIMO_H
