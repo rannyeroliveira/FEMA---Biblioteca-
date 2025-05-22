@@ -32,8 +32,18 @@ public:
     {
     }
 
+    Emprestimo(int codigo_pessoa, int codigo_livro, const tm& data_emprestimo,
+    const tm& data_prevista_devolucao, const tm& data_efetiva_devolucao)
+    :codigo_pessoa(codigo_pessoa),
+      codigo_livro(codigo_livro),
+      data_emprestimo(data_emprestimo),
+      data_prevista_devolucao(data_prevista_devolucao),
+      data_efetiva_devolucao(data_efetiva_devolucao)
+    {
+    }
+
     int getId() const { return idEmprestimo; }
-    void setId(int id) { idEmprestimo = id; }
+    void setId(int id){ idEmprestimo = id; }
 
     int getCodigoPessoa() const { return codigo_pessoa; }
     void setCodigoPessoa(int cod) { codigo_pessoa = cod; }

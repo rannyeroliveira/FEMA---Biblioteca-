@@ -56,6 +56,11 @@ public:
         return false;
     }
 
+    bool isDisponivel(int id)
+    {
+        return this->getByID(id).isDisponivel();
+    }
+
     void inserirLivros(Livro tabelaNovosLivros[], int tamanhoTabelaNovosLivros)
     {                  // Tabela novos livros = T
 
@@ -93,19 +98,19 @@ public:
         atualizaTabela(tabelaDeLivros, tabelaGeradaAutores, tamanhoTabelaGeradaAutores);
     }
 
-    void updateLivro(int id, char nomeLivro[], int codigoEditora, int codigoAutor, int codigoGenero, bool disponivel)
+    void updateLivro(Livro livro)
     {
         int i = 0;
 
-        int pos = buscaBinaria(i, tamanhoTabelaLivrosAtual, tabelaDeLivros, id);
+        int pos = buscaBinaria(i, tamanhoTabelaLivrosAtual, tabelaDeLivros, livro.getId());
 
         if(pos < 0)
         {
-            cout << "O Livro com id " << id << " não existe na base de dados!";
+            cout << "O Livro com id " << livro.getId() << " não existe na base de dados!";
             return;
         }
 
-        tabelaDeLivros[pos] = Livro(id, nomeLivro, codigoEditora, codigoAutor, codigoGenero, disponivel);
+        tabelaDeLivros[pos] = livro;
         cout << "Livro atualizado com sucesso!" << endl;
     }
     
