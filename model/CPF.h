@@ -1,3 +1,8 @@
+#ifndef CPF_H
+#define CPF_H
+
+#include <cstring>
+
 class CPF {
 private:
     char cpf[12];
@@ -16,7 +21,6 @@ public:
             std::cout<<"CPF invalido";
         }else {
             strncpy(this->cpf, cpfStr,11);
-            std::cout<<"CPF valido";
         }
 
     }
@@ -66,3 +70,5 @@ public:
     }
     
 };
+
+#endif // CPF_H

@@ -1,7 +1,7 @@
 #ifndef AUTOR_H
 #define AUTOR_H
 
-#include <string>
+#include <cstring>
 #include<stdio.h>
 
 using namespace std;

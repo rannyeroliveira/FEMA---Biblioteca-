@@ -10,6 +10,11 @@ class PessoaRepository {
 public:
     static const int TAMANHO = 100;
 
+    int getMaximoPessoasParaInserir()
+    {
+        return TAMANHO - getTamanhoAtual();
+    }
+
     int getTamanhoAtual() {
         return tamanhoTabelaPessoasAtual;
     }
