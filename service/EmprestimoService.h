@@ -128,7 +128,7 @@ public:
                 cout << "Nome do livro emprestado: " << l.getNomeLivro() << endl;
                 cout << "Nome da editora: " << editoraRepository.getByID(l.getCodigoEditora()).getNomeEdtr() << endl;
                 cout << "Nome do autor: " << autorRepository.getByID(l.getCodigoAutor()).getNomeAutor() << endl;
-                cout << "Data prevista da devolução: " << e.getDataPrevista().tm_mday << "/" << e.getDataPrevista().tm_mon + 1 << e.getDataPrevista().tm_year + 1900 << endl;
+                cout << "Data prevista da devolução: " << e.getDataPrevista().tm_mday << "/" << e.getDataPrevista().tm_mon + 1 << "/" << e.getDataPrevista().tm_year + 1900 << endl;
                 int dias = diasEntreDatas(pegarDataAtual(), e.getDataPrevista());
 
                 if(dias > 0)
