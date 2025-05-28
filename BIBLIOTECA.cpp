@@ -9,6 +9,7 @@
 #include "service/PessoaService.h"
 
 int main() {
-    PessoaService pessoaService;
-    pessoaService.createPessoa();
+    LivroService livro_service;
+
+    livro_service.livrosDisponiveis();
 }
