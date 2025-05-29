@@ -99,6 +99,27 @@ public:
         livroRepository.inserirLivros(tabelaNovosLivros, totalLivrosInserir);
     }
 
+    void livrosDisponiveis()
+    {
+        Livro *tabelaDeLivros = livroRepository.getAllExistente();
+        int tamanhoTabelaLivros = livroRepository.getTamanhoAtual();
+
+        int totalLivrosDisponiveis = 0;
+        int totalLivrosEmprestados = 0;
+        for (int i = 0; i < tamanhoTabelaLivros; ++i)
+        {
+            if(!tabelaDeLivros[i].isDisponivel())
+            {
+                cout << tabelaDeLivros[i].getId() << endl;
+                cout << tabelaDeLivros[i].getNomeLivro() << endl;
+                totalLivrosEmprestados++;
+            } else totalLivrosDisponiveis++;
+        }
+
+        cout << "Total de livros emprestados: " << totalLivrosEmprestados << endl;
+        cout << "Total de livros disponíveis: " << totalLivrosDisponiveis << endl;
+    }
+
 
 };
 

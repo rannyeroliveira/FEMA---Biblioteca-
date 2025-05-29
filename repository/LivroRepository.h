@@ -28,6 +28,17 @@ public:
         return tabelaDeLivros;
     }
 
+    Livro* getAllExistente()
+    {
+        Livro tabelaLivros[getTamanhoAtual()];
+        for (int i = 0; i < getTamanhoAtual(); ++i)
+        {
+            tabelaLivros[i] = tabelaDeLivros[i];
+        }
+
+        return tabelaLivros;
+    }
+
     LivroRepository() {populaVetor();}
 
     Livro getByID(int id)

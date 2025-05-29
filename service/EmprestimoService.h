@@ -36,6 +36,26 @@ class EmprestimoService {
         return data;
     }
 
+    // retorna true se data1 for maior que data2
+    bool compararData(tm data1, tm data2)
+    {
+        // Normaliza as structs tm e converte para time_t
+        time_t t1 = std::mktime(&data1);
+        time_t t2 = std::mktime(&data2);
+        return t1 > t2;
+    }
+
+    int diasEntreDatas(tm data1, tm data2) {
+        time_t t1 = std::mktime(&data1);
+        time_t t2 = std::mktime(&data2);
+
+        double segundos = std::difftime(t1, t2);  // diferença em segundos
+        int dias = static_cast<int>(segundos / (60 * 60 * 24));  // converte para dias
+
+        return dias;
+    }
+
+
 public:
 
     void emprestimo()
@@ -91,6 +111,33 @@ public:
         empArray[0].setId(emprestimoRepository.getUltimoIdCadastrado() + 1);
         emprestimoRepository.inserirEmprestimos(empArray, 1);
         cout << "Emprestimo inserido com sucesso!" << endl;
+    }
+
+    void emprestimoAtrasado()
+    {
+        Emprestimo *tabelaDeEmprestimos = emprestimoRepository.getAllExistente();
+        int tamanhoTabelaDeEmprestimos = emprestimoRepository.getTamanhoAtual();
+
+        for (int i = 0; i < tamanhoTabelaDeEmprestimos; ++i)
+        {
+            if(compararData(pegarDataAtual(), tabelaDeEmprestimos[i].getDataPrevista()))
+            {
+                Livro l = livroRepository.getByID(tabelaDeEmprestimos[i].getCodigoLivro());
+                Emprestimo e = tabelaDeEmprestimos[i];
+                cout << "Codigo do livro emprestado: " << l.getId() << endl;
+                cout << "Nome do livro emprestado: " << l.getNomeLivro() << endl;
+                cout << "Nome da editora: " << editoraRepository.getByID(l.getCodigoEditora()).getNomeEdtr() << endl;
+                cout << "Nome do autor: " << autorRepository.getByID(l.getCodigoAutor()).getNomeAutor() << endl;
+                cout << "Data prevista da devolução: " << e.getDataPrevista().tm_mday << "/" << e.getDataPrevista().tm_mon + 1 << "/" << e.getDataPrevista().tm_year + 1900 << endl;
+                int dias = diasEntreDatas(pegarDataAtual(), e.getDataPrevista());
+
+                if(dias > 0)
+                {
+                    std::cout << "Atrasado em " << dias << " dias.\n";
+                } else cout << "Ainda está no prazo." << endl;
+
+            }
+        }
     }
 };
 
