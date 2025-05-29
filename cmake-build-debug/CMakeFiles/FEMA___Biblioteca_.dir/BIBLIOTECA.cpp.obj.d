@@ -140,6 +140,7 @@ CMakeFiles/FEMA___Biblioteca_.dir/BIBLIOTECA.cpp.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/x86_64-w64-mingw32/include/string.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h \
  C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/AutorRepository.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Autor.h \
  C:\Users\ranny\OneDrive\Desktop\FEMA\projeto-begosso\FEMA---Biblioteca-\service/EditoraService.h \
  C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/EditoraRepository.h \
  C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Editora.h \
@@ -160,4 +161,5 @@ CMakeFiles/FEMA___Biblioteca_.dir/BIBLIOTECA.cpp.obj: \
  C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Cidade.h \
  C:\Users\ranny\OneDrive\Desktop\FEMA\projeto-begosso\FEMA---Biblioteca-\service/PessoaService.h \
  C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Pessoa.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/CPF.h
+ C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/CPF.h \
+ C:\Users\ranny\OneDrive\Desktop\FEMA\projeto-begosso\FEMA---Biblioteca-\service/DevolucaoService.h

@@ -156,6 +156,7 @@ CMakeFiles/FEMA___Biblioteca_.dir/BIBLIOTECA.cpp.obj: C:/Users/ranny/OneDrive/De
   C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/LivroRepository.h \
   C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/PessoaRepository.h \
   C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/service/AutorService.h \
+  C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/service/DevolucaoService.h \
   C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/service/EditoraService.h \
   C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/service/EmprestimoService.h \
   C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/service/LivroService.h \
@@ -467,6 +468,8 @@ C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Li
 C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Pessoa.h:
 
 C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/EditoraRepository.h:
+
+C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/service/DevolucaoService.h:
 
 C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/GeneroRepository.h:
 

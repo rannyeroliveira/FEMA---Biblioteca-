@@ -5,7 +5,7 @@
 #ifndef AUTORREPOSITORY_H
 #define AUTORREPOSITORY_H
 
-
+#include "../model/Autor.h"
 
 class AutorRepository
 {

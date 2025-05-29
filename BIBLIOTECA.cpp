@@ -7,8 +7,8 @@
 #include "service/LivroService.h"
 #include "service/EmprestimoService.h"
 #include "service/PessoaService.h"
-
+#include "service/DevolucaoService.h"
 int main() {
-    PessoaService pessoaService;
-    pessoaService.createPessoa();
+    DevolucaoService devolucao;
+    devolucao.devolucao();
 }
