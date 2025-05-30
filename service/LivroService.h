@@ -17,7 +17,7 @@ class LivroService {
     GeneroRepository generoRepository;
 
 public:
-    void createAutor()
+    void createLivro()
     {
 
         int totalLivrosInserir;
