@@ -20,7 +20,7 @@ public:
         codigo_editora = 0;
         codigo_autor = 0;
         codigo_genero = 0;
-        disponivel = true;
+        disponivel = false;
     }
 
     Livro(int id, const char nome[], int codEditora, int codAutor, int codGenero, bool disp) {
