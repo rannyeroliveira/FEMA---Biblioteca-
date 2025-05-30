@@ -75,8 +75,9 @@ public:
                 } while (pessoaRepository.existsByID(id));
             }
 
-            cin.ignore();
+
             cout << "Digite o nome: ";
+            cin.ignore();
             gets(nome);
 
             cout << "Digite o CPF: ";
