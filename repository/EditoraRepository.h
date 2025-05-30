@@ -14,7 +14,10 @@ public:
     {
         return this->tamanhoTabelaEditorasAtual;
     }
-
+    int getMaximoEditorasParaInserir()
+    {
+        return TAMANHO - getTamanhoAtual();
+    }
     Editora* getAll()
     {
         return tabelaDeEditoras;
