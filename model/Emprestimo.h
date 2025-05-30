@@ -19,6 +19,19 @@ public:
         idEmprestimo = 0;
         codigo_pessoa = 0;
         codigo_livro = 0;
+
+        this->data_emprestimo.tm_mday = 0;
+        this->data_emprestimo.tm_mon = 0;
+        this->data_emprestimo.tm_year = 0;
+
+        this->data_prevista_devolucao.tm_mday = 0;
+        this->data_prevista_devolucao.tm_mon = 0;
+        this->data_prevista_devolucao.tm_year = 0;
+
+        this->data_efetiva_devolucao.tm_mday = 0;
+        this->data_efetiva_devolucao.tm_mon = 0;
+        this->data_efetiva_devolucao.tm_year = 0;
+
     }
 
     Emprestimo(int id_emprestimo, int codigo_pessoa, int codigo_livro, const tm& data_emprestimo,
