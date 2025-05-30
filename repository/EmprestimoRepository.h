@@ -31,6 +31,7 @@ public:
         return this->tamanhoTabelaEmprestimosAtual;
     }
 
+
     Emprestimo* getAll()
     {
         return tabelaDeEmprestimos;
@@ -75,6 +76,16 @@ public:
         return false;
     }
 
+    void atualizaDataEfetivaParaAtual(int id, tm& data_atual) {
+        int i = 0;
+        int indice = buscaBinaria(i, tamanhoTabelaEmprestimosAtual, tabelaDeEmprestimos, id);
+
+        if (indice >= 0) {
+            tabelaDeEmprestimos[indice].setDataEfetiva(data_atual);
+        } else {
+            cout << "Erro: Empréstimo com ID " << id << " não encontrado para atualizar a data de devolução." << endl;
+        }
+    }
     void inserirEmprestimos(Emprestimo tabelaNovosEmprestimos[], int tamanhoTabelaNovosEmprestimos)
     {
         int tamanhoTabelaGeradaEmprestimos = tamanhoTabelaNovosEmprestimos + tamanhoTabelaEmprestimosAtual;
@@ -173,16 +184,22 @@ private:
     int buscaBinaria(int i, int f, Emprestimo a[], int idEmprestimo)
     {
         int m;
+        f--; // Corrige para o último índice válido do vetor
         while (i <= f)
         {
             m = (i + f) / 2;
-            if(a[m].getId() == idEmprestimo)
+            if (a[m].getId() == idEmprestimo)
             {
                 return m;
-            } else if(a[m].getId() < idEmprestimo)
+            }
+            else if (a[m].getId() < idEmprestimo)
             {
                 i = m + 1;
-            } else f = m - 1;
+            }
+            else
+            {
+                f = m - 1;
+            }
         }
 
         return -1;
@@ -199,16 +216,16 @@ private:
 
     void populaVetor()
     {
-        tabelaDeEmprestimos[0] = Emprestimo(1, 1001, 2001, criarData(1, 2, 2025), criarData(15, 1, 2025), criarData(20, 1, 2025));
-        tabelaDeEmprestimos[1] = Emprestimo(2, 1002, 2002, criarData(2, 1, 2025), criarData(16, 1, 2025), criarData(1, 2, 2025));
-        tabelaDeEmprestimos[2] = Emprestimo(3, 1003, 2003, criarData(3, 1, 2025), criarData(17, 1, 2025), {});
-        tabelaDeEmprestimos[3] = Emprestimo(4, 1004, 2004, criarData(4, 1, 2025), criarData(18, 1, 2025), {});
-        tabelaDeEmprestimos[4] = Emprestimo(5, 1005, 2005, criarData(5, 1, 2025), criarData(19, 1, 2025), criarData(5, 2, 2025));
-        tabelaDeEmprestimos[5] = Emprestimo(6, 1006, 2006, criarData(6, 1, 2025), criarData(20, 1, 2025), {});
-        tabelaDeEmprestimos[6] = Emprestimo(7, 1007, 2007, criarData(7, 1, 2025), criarData(21, 1, 2025), criarData(30, 1, 2025));
-        tabelaDeEmprestimos[7] = Emprestimo(8, 1008, 2008, criarData(8, 1, 2025), criarData(22, 1, 2025), {});
-        tabelaDeEmprestimos[8] = Emprestimo(9, 1009, 2009, criarData(9, 1, 2025), criarData(23, 1, 2025), {});
-        tabelaDeEmprestimos[9] = Emprestimo(10, 1010, 2010, criarData(10, 1, 2025), criarData(24, 1, 2025), criarData(10, 2, 2025));
+        tabelaDeEmprestimos[0] = Emprestimo(1, 1, 1, criarData(1, 2, 2025), criarData(15, 1, 2025), criarData(20, 1, 2025));
+        tabelaDeEmprestimos[1] = Emprestimo(2, 2, 2, criarData(2, 1, 2025), criarData(16, 1, 2025), criarData(1, 2, 2025));
+        tabelaDeEmprestimos[2] = Emprestimo(3, 3, 3, criarData(3, 1, 2025), criarData(17, 1, 2025), {});         // livro ainda não devolvido
+        tabelaDeEmprestimos[3] = Emprestimo(4, 4, 4, criarData(4, 1, 2025), criarData(18, 1, 2025), {});         // livro ainda não devolvido
+        tabelaDeEmprestimos[4] = Emprestimo(5, 5, 5, criarData(5, 1, 2025), criarData(19, 1, 2025), criarData(5, 2, 2025));
+        tabelaDeEmprestimos[5] = Emprestimo(6, 6, 6, criarData(6, 1, 2025), criarData(20, 1, 2025), {});
+        tabelaDeEmprestimos[6] = Emprestimo(7, 7, 7, criarData(7, 1, 2025), criarData(21, 1, 2025), criarData(30, 1, 2025));
+        tabelaDeEmprestimos[7] = Emprestimo(8, 8, 8, criarData(8, 1, 2025), criarData(22, 1, 2025), {});
+        tabelaDeEmprestimos[8] = Emprestimo(9, 9, 9, criarData(9, 1, 2025), criarData(23, 1, 2025), {});
+        tabelaDeEmprestimos[9] = Emprestimo(10, 10, 10, criarData(10, 1, 2025), criarData(24, 1, 2025), criarData(10, 2, 2025));
     }
 };
 
