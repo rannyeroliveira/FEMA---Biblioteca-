@@ -115,17 +115,21 @@ public:
 
     void livrosDisponiveis()
     {
-        Livro *tabelaDeLivros = livroRepository.getAllExistente();
+        Livro tabelaDeLivros[livroRepository.getTamanhoAtual()];
         int tamanhoTabelaLivros = livroRepository.getTamanhoAtual();
+        livroRepository.getAllExistente(tabelaDeLivros);
 
         int totalLivrosDisponiveis = 0;
         int totalLivrosEmprestados = 0;
+
+        cout << "\nMostrar livros emprestados:" << endl;
+
         for (int i = 0; i < tamanhoTabelaLivros; ++i)
         {
             if(!tabelaDeLivros[i].isDisponivel())
             {
-                cout << tabelaDeLivros[i].getId() << endl;
-                cout << tabelaDeLivros[i].getNomeLivro() << endl;
+                cout << "ID: " << tabelaDeLivros[i].getId() << endl;
+                cout << "Nome: " << tabelaDeLivros[i].getNomeLivro() << endl << endl;
                 totalLivrosEmprestados++;
             } else totalLivrosDisponiveis++;
         }

@@ -37,11 +37,11 @@ class EmprestimoService {
     }
 
     // retorna true se data1 for maior que data2
-    bool compararData(tm data1, tm data2)
+    bool compararData(tm dataAtual, tm dataPrevista)
     {
         // Normaliza as structs tm e converte para time_t
-        time_t t1 = std::mktime(&data1);
-        time_t t2 = std::mktime(&data2);
+        time_t t1 = std::mktime(&dataAtual);
+        time_t t2 = std::mktime(&dataPrevista);
         return t1 > t2;
     }
 
@@ -115,12 +115,14 @@ public:
 
     void emprestimoAtrasado()
     {
-        Emprestimo *tabelaDeEmprestimos = emprestimoRepository.getAllExistente();
+        Emprestimo tabelaDeEmprestimos[emprestimoRepository.getTamanhoAtual()];
         int tamanhoTabelaDeEmprestimos = emprestimoRepository.getTamanhoAtual();
+        emprestimoRepository.getAllExistente(tabelaDeEmprestimos);
 
+        cout << "Dados de emprestimos atrasados:" << endl;
         for (int i = 0; i < tamanhoTabelaDeEmprestimos; ++i)
         {
-            if(compararData(pegarDataAtual(), tabelaDeEmprestimos[i].getDataPrevista()))
+            if(compararData(pegarDataAtual(), tabelaDeEmprestimos[i].getDataPrevista()) && tabelaDeEmprestimos[i].getDataEfetiva().tm_mday == 0)
             {
                 Livro l = livroRepository.getByID(tabelaDeEmprestimos[i].getCodigoLivro());
                 Emprestimo e = tabelaDeEmprestimos[i];
@@ -133,9 +135,8 @@ public:
 
                 if(dias > 0)
                 {
-                    std::cout << "Atrasado em " << dias << " dias.\n";
-                } else cout << "Ainda está no prazo." << endl;
-
+                    std::cout << "Atrasado em " << dias << " dias.\n\n";
+                }
             }
         }
     }

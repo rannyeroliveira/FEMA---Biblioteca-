@@ -48,6 +48,14 @@ public:
         return tabelaEmprestimos;
     }
 
+    Emprestimo* getAllExistente(Emprestimo e[])
+    {
+        for (int i = 0; i < getTamanhoAtual(); ++i)
+        {
+            e[i] = tabelaDeEmprestimos[i];
+        }
+    }
+
     EmprestimoRepository() {populaVetor();}
 
     Emprestimo getByID(int id)
