@@ -7,6 +7,9 @@
 #include "../repository/CidadeRepository.h"
 
 #include <clocale>
+#include <string>
+#include <iostream>
+#include <limits>
 
 class PessoaService {
 
@@ -36,6 +39,23 @@ class PessoaService {
         }
     }
 
+    bool isIdRepetido(Pessoa* pessoa, int id, int cont)
+    {
+
+        int i = 0;
+
+        do
+        {
+            if(pessoa[i].getId() == id) {
+                return true;
+            }
+
+            i++;
+        } while (i < cont);
+
+        return false;
+    }
+
 public:
     PessoaService() {}
 
@@ -58,17 +78,19 @@ public:
         }
 
         Pessoa tabelaNovasPessoas[totalPessoasInserir];
+        int contPessoasInseridas = 0;
 
         for (int i = 0; i < totalPessoasInserir; ++i) {
             int id, codCidade;
             char nome[100];
-            char cpf[20];
+            char cpfStr[12];
             char endereco[100];
+            CPF cpf;
 
             cout << "Digite o ID: ";
             cin >> id;
 
-            if (pessoaRepository.existsByID(id)) {
+            if (pessoaRepository.existsByID(id) || isIdRepetido(tabelaNovasPessoas, id, contPessoasInseridas)) {
                 do {
                     cout << "ID " << id << " já utilizado. Digite um novo id: ";
                     cin >> id;
@@ -81,11 +103,13 @@ public:
             gets(nome);
 
             cout << "Digite o CPF: ";
-            cin >> cpf;
-            while (!CPF().validaCPF(cpf)) {
-                cout << "CPF INVALIDO. DIGITE NOVAMENTE: ";
-                cin >> cpf;
+            cin >> cpfStr;
+            while (!cpf.validaCPF(cpfStr)) {
+                cpf.setCPF(cpfStr);
+                cout << endl<< "Digite o cpf: "<< endl;
+                cin >> cpfStr;
             }
+
 
             cout << "Digite o endereco:";
             cin.ignore();
@@ -117,7 +141,7 @@ public:
 
 
 
-            tabelaNovasPessoas[i] = Pessoa(id, nome, cpf, endereco, codCidade);
+            tabelaNovasPessoas[i] = Pessoa(id, nome, cpfStr, endereco, codCidade);
         }
 
         pessoaRepository.inserirPessoas(tabelaNovasPessoas, totalPessoasInserir);

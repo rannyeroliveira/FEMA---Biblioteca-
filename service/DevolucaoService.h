@@ -10,7 +10,9 @@
 #include"../repository/LivroRepository.h"
 #include"../repository/AutorRepository.h"
 #include "../repository/EmprestimoRepository.h"
+
 #include <iostream>
+
 class DevolucaoService {
 private:
     EmprestimoRepository emprestimorepository;
@@ -18,6 +20,8 @@ private:
     LivroRepository livrorepository;
     EditoraRepository editorarepository;
     AutorRepository autorepository;
+
+
 public:
     tm pegarDataAtual(){
         std::time_t agora = std::time(nullptr);
