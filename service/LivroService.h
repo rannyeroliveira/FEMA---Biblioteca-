@@ -16,8 +16,26 @@ class LivroService {
     AutorRepository autorRepository;
     GeneroRepository generoRepository;
 
+
+    bool isIdRepetido(Livro* livro, int id, int cont)
+    {
+
+        int i = 0;
+
+        do
+        {
+            if(livro[i].getId() == id) {
+                return true;
+            }
+
+            i++;
+        } while (i < cont);
+
+        return false;
+    }
+
 public:
-    void createAutor()
+    void createLivro()
     {
 
         int totalLivrosInserir;
@@ -34,6 +52,7 @@ public:
         }
 
         Livro tabelaNovosLivros[totalLivrosInserir];
+        int contLivrosInseridos = 0;
 
         for (int i = 0; i < totalLivrosInserir; ++i)
         {
@@ -49,7 +68,7 @@ public:
 
 
             // Validar tambem se ele repetiu algum ID
-            if (livroRepository.existsByID(id))
+            if (livroRepository.existsByID(id) || isIdRepetido(tabelaNovosLivros, id, contLivrosInseridos))
             {
                 do
                 {

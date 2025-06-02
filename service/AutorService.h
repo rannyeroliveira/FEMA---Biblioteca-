@@ -4,7 +4,6 @@
 #include "../model/Autor.h"
 #include "../repository/AutorRepository.h"
 
-
 class AutorService
 {
     AutorRepository autorRepository;
@@ -27,6 +26,22 @@ class AutorService
             cout << a.getNomeAutor();
             return;
         }
+    }
+
+    bool isIdRepetido(Autor* autors, int id, int cont)
+    {
+        int i = 0;
+
+        do
+        {
+            if(autors[i].getId() == id) {
+                return true;
+            }
+
+            i++;
+        } while (i < cont);
+
+        return false;
     }
 
 public:
@@ -54,6 +69,7 @@ public:
         }
 
         Autor tabelaNovosAutores[totalAutoresInserir];
+        int contAutoresInseridos = 0;
 
         for (int i = 0; i < totalAutoresInserir; ++i)
         {
@@ -63,16 +79,10 @@ public:
             cout << "Digite o ID: " << endl;
             cin >> id;
 
-
-            // Validar tambem se ele repetiu algum ID
-            if (autorRepository.existsByID(id))
+            while (autorRepository.existsByID(id) || isIdRepetido(tabelaNovosAutores, id, contAutoresInseridos))
             {
-                do
-                {
-                    cout << "ID " << id << " já utilizado. Digite um novo id: ";
-                    cin >> id;
-                }
-                while (autorRepository.existsByID(id));
+                cout << "ID " << id << " já utilizado. Digite um novo id: ";
+                cin >> id;
             }
 
             cout << "Digite o nome: " << endl;
@@ -81,6 +91,7 @@ public:
 
             tabelaNovosAutores[i].setId(id);
             tabelaNovosAutores[i].setNomeAutor(nome);
+            contAutoresInseridos++;
         }
 
         autorRepository.inserirAutores(tabelaNovosAutores, totalAutoresInserir);

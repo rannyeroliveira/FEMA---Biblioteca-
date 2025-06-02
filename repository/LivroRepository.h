@@ -13,6 +13,16 @@ class LivroRepository
 public:
     int static const TAMANHO = 100;
 
+    void trocarBoolLivro(int id) {
+        int i = 0;
+        int indice = buscaBinaria(i, tamanhoTabelaLivrosAtual, tabelaDeLivros, id);
+
+        if (indice >= 0) {
+            tabelaDeLivros[indice].setDisponivel(true);
+        } else {
+            cout << "Erro: Livro com ID " << id << " não encontrado para marcar como disponível." << endl;
+        }
+    }
     int getMaximoLivrosParaInserir()
     {
         return TAMANHO - getTamanhoAtual();

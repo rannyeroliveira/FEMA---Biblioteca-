@@ -13,7 +13,10 @@ public:
     {
         return this->tamanhoTabelaCidadesAtual;
     }
-
+    int getMaximoCidadesParaInserir()
+    {
+        return TAMANHO - getTamanhoAtual();
+    }
     Cidade* getAll()
     {
         return tabelaDeCidades;

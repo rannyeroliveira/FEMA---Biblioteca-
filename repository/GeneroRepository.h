@@ -13,7 +13,10 @@ public:
     int getTamanhoAtual() {
         return tamanhoTabelaGenerosAtual;
     }
-
+    int getMaximoGenerosParaInserir()
+    {
+        return TAMANHO - getTamanhoAtual();
+    }
     Genero* getAll() {
         return tabelaDeGeneros;
     }
