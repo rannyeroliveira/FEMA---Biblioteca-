@@ -75,7 +75,7 @@ public:
         cin >> confirmacao;
 
         if (confirmacao == 's' || confirmacao == 'S') {
-            livrorepository.trocarBoolLivro(livro.getId());
+            livrorepository.updateLivro(livro);
             emprestimorepository.atualizaDataEfetivaParaAtual(emprestimo.getId(), data_atual);
             cout << "Livro devolvido com sucesso!" << endl;
         }
