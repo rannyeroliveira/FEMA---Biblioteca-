@@ -11,8 +11,21 @@ class EditoraService
 {
     EditoraRepository editoraRepository;
 
+    bool isIdRepetido(Editora* editora, int id, int contAutoresInseridos)
+    {
+        int i = 0;
 
+        do
+        {
+            if(editora[i].getId() == id) {
+                return true;
+            }
 
+            i++;
+        } while (i < contAutoresInseridos);
+
+        return false;
+    }
 
 
 public:
@@ -40,6 +53,7 @@ public:
         }
 
         Editora tabelaNovasEditoras[totalEditorasInserir];
+        int contEditorasInseridas = 0;
 
         for (int i = 0; i < totalEditorasInserir; ++i)
         {
@@ -50,7 +64,7 @@ public:
             cout << "Digite o ID: ";
             cin >> id;
 
-            while (editoraRepository.existsByID(id))
+            while (editoraRepository.existsByID(id) || isIdRepetido(tabelaNovasEditoras, id, contEditorasInseridas))
             {
                 cout << "ID " << id << " já utilizado. Digite um novo ID: ";
                 cin >> id;

@@ -28,6 +28,23 @@ class CidadeService {
         }
     }
 
+    bool isIdRepetido(Cidade* cidades, int id, int cont)
+    {
+
+        int i = 0;
+
+        do
+        {
+            if(cidades[i].getId() == id) {
+                return true;
+            }
+
+            i++;
+        } while (i < cont);
+
+        return false;
+    }
+
 public:
     CidadeService() {}
 
@@ -49,6 +66,7 @@ public:
         }
 
         Cidade tabelaNovasCidades[totalCidadesInserir];
+        int contCidadesInseridas = 0;
 
         for (int i = 0; i < totalCidadesInserir; ++i) {
             int id;
@@ -58,8 +76,8 @@ public:
             cout << "Digite o ID: ";
             cin >> id;
 
-            while (cidadeRepository.existsByID(id)) {
-                cout << "ID " << id << " já utilizado. Digite um novo ID: ";
+            while (cidadeRepository.existsByID(id) || isIdRepetido(tabelaNovasCidades, id, contCidadesInseridas)) {
+                cout << "ID " << id << " já utilizado. Digite um novo ID: " << endl;
                 cin >> id;
             }
 

@@ -26,6 +26,23 @@ class GeneroService {
         }
     }
 
+    bool isIdRepetido(Genero* genero, int id, int cont)
+    {
+
+        int i = 0;
+
+        do
+        {
+            if(genero[i].getId() == id) {
+                return true;
+            }
+
+            i++;
+        } while (i < cont);
+
+        return false;
+    }
+
 public:
     GeneroService() {}
 
@@ -47,6 +64,7 @@ public:
         }
 
         Genero tabelaNovosGeneros[totalGenerosInserir];
+        int contGenerosInseridos = 0;
 
         for (int i = 0; i < totalGenerosInserir; ++i) {
             int id;
@@ -55,7 +73,7 @@ public:
             cout << "Digite o ID: ";
             cin >> id;
 
-            while (generoRepository.existsByID(id)) {
+            while (generoRepository.existsByID(id) || isIdRepetido(tabelaNovosGeneros, id, contGenerosInseridos)) {
                 cout << "ID " << id << " já utilizado. Digite um novo ID: ";
                 cin >> id;
             }

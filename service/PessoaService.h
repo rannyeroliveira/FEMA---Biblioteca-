@@ -36,6 +36,23 @@ class PessoaService {
         }
     }
 
+    bool isIdRepetido(Pessoa* pessoa, int id, int cont)
+    {
+
+        int i = 0;
+
+        do
+        {
+            if(pessoa[i].getId() == id) {
+                return true;
+            }
+
+            i++;
+        } while (i < cont);
+
+        return false;
+    }
+
 public:
     PessoaService() {}
 
@@ -58,6 +75,7 @@ public:
         }
 
         Pessoa tabelaNovasPessoas[totalPessoasInserir];
+        int contPessoasInseridas = 0;
 
         for (int i = 0; i < totalPessoasInserir; ++i) {
             int id, codCidade;
@@ -68,7 +86,7 @@ public:
             cout << "Digite o ID: ";
             cin >> id;
 
-            if (pessoaRepository.existsByID(id)) {
+            if (pessoaRepository.existsByID(id) || isIdRepetido(tabelaNovasPessoas, id, contPessoasInseridas)) {
                 do {
                     cout << "ID " << id << " já utilizado. Digite um novo id: ";
                     cin >> id;
