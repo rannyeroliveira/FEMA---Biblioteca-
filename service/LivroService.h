@@ -67,15 +67,10 @@ public:
             cin >> id;
 
 
-            // Validar tambem se ele repetiu algum ID
-            if (livroRepository.existsByID(id) || isIdRepetido(tabelaNovosLivros, id, contLivrosInseridos))
+            while (livroRepository.existsByID(id) || isIdRepetido(tabelaNovosLivros, id, contLivrosInseridos))
             {
-                do
-                {
-                    cout << "ID " << id << " já utilizado. Digite um novo id: ";
-                    cin >> id;
-                }
-                while (livroRepository.existsByID(id));
+                cout << "ID " << id << " já utilizado. Digite um novo id: ";
+                cin >> id;
             }
 
             cout << "Digite o nome: " << endl;

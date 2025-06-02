@@ -90,11 +90,9 @@ public:
             cout << "Digite o ID: ";
             cin >> id;
 
-            if (pessoaRepository.existsByID(id) || isIdRepetido(tabelaNovasPessoas, id, contPessoasInseridas)) {
-                do {
-                    cout << "ID " << id << " já utilizado. Digite um novo id: ";
-                    cin >> id;
-                } while (pessoaRepository.existsByID(id));
+            while (pessoaRepository.existsByID(id) || isIdRepetido(tabelaNovasPessoas, id, contPessoasInseridas)) {
+                cout << "ID " << id << " já utilizado. Digite um novo id: ";
+                cin >> id;
             }
 
 
