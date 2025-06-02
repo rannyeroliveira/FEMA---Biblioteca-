@@ -7,6 +7,9 @@
 #include "../repository/CidadeRepository.h"
 
 #include <clocale>
+#include <string>
+#include <iostream>
+#include <limits>
 
 class PessoaService {
 
@@ -62,8 +65,9 @@ public:
         for (int i = 0; i < totalPessoasInserir; ++i) {
             int id, codCidade;
             char nome[100];
-            char cpf[20];
+            char cpfStr[12];
             char endereco[100];
+            CPF cpf;
 
             cout << "Digite o ID: ";
             cin >> id;
@@ -75,16 +79,19 @@ public:
                 } while (pessoaRepository.existsByID(id));
             }
 
-            cin.ignore();
+
             cout << "Digite o nome: ";
+            cin.ignore();
             gets(nome);
 
             cout << "Digite o CPF: ";
-            cin >> cpf;
-            while (!CPF().validaCPF(cpf)) {
-                cout << "CPF INVALIDO. DIGITE NOVAMENTE: ";
-                cin >> cpf;
+            cin >> cpfStr;
+            while (!cpf.validaCPF(cpfStr)) {
+                cpf.setCPF(cpfStr);
+                cout << endl<< "Digite o cpf: "<< endl;
+                cin >> cpfStr;
             }
+
 
             cout << "Digite o endereco:";
             cin.ignore();
@@ -116,7 +123,7 @@ public:
 
 
 
-            tabelaNovasPessoas[i] = Pessoa(id, nome, cpf, endereco, codCidade);
+            tabelaNovasPessoas[i] = Pessoa(id, nome, cpfStr, endereco, codCidade);
         }
 
         pessoaRepository.inserirPessoas(tabelaNovasPessoas, totalPessoasInserir);
