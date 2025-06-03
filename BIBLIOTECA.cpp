@@ -21,7 +21,7 @@ void mostrarMenu() {
     cout << "6 - Criar livro\n";
     cout << "7 - Realizar emprestimo\n";
     cout << "8 - Realizar devolucao\n";
-    cout << "9 - Mostrar livros disponiveis\n";
+    cout << "9 - Mostrar livros emprestados\n";
     cout << "10 - Mostrar emprestimos atrasados\n";
     cout << "0 - Sair\n";
     cout << "Escolha uma opcao: ";
