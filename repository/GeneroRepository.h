@@ -41,8 +41,19 @@ public:
         int pos = buscaBinaria(i, tamanhoTabelaGenerosAtual, tabelaDeGeneros, id);
         return (pos >= 0);
     }
-
+    void ordenaIdGeneroParaInserir(Genero novosGeneros[], int tamanhoNovos) {
+        for (int i = 0; i < tamanhoNovos - 1; ++i) {
+            for (int j = 0; j < tamanhoNovos - i - 1; ++j) {
+                if (novosGeneros[j].getId() > novosGeneros[j + 1].getId()) {
+                    Genero temp = novosGeneros[j];
+                    novosGeneros[j] = novosGeneros[j + 1];
+                    novosGeneros[j + 1] = temp;
+                }
+            }
+        }
+    }
     void inserirGeneros(Genero novosGeneros[], int tamanhoNovos) {
+        ordenaIdGeneroParaInserir(novosGeneros, tamanhoNovos);
         int novoTamanhoTotal = tamanhoTabelaGenerosAtual + tamanhoNovos;
         Genero tabelaAtualizada[novoTamanhoTotal];
 

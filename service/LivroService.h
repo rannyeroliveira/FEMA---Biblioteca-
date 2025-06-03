@@ -1,7 +1,3 @@
-//
-// Created by Gabriel Isper on 19/05/25.
-//
-
 #ifndef LIVROSERVICE_H
 #define LIVROSERVICE_H
 
@@ -93,7 +89,7 @@ public:
 
             do
             {
-                cout << "Digite o ID do Genero: " << endl;
+                cout << "Digite o ID do Gênero: " << endl;
                 cin >> codigo_genero;
             } while (!generoRepository.existsByID(codigo_genero));
             cout << generoRepository.getByID(codigo_genero).getDescricao() << endl;

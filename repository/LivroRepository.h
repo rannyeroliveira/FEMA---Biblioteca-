@@ -1,7 +1,3 @@
-//
-// Created by Gabriel Isper on 19/05/25.
-//
-
 #ifndef LIVROREPOSITORY_H
 #define LIVROREPOSITORY_H
 
@@ -79,42 +75,48 @@ public:
     {
         return this->getByID(id).isDisponivel();
     }
-
+    void ordenaIdLivroParaInserir(Livro tabelaNovosLivros[], int tamanhoTabelaNovosLivros) {
+        for (int i = 0; i < tamanhoTabelaNovosLivros - 1; ++i) {
+            for (int j = 0; j < tamanhoTabelaNovosLivros - i - 1; ++j) {
+                if (tabelaNovosLivros[j].getId() > tabelaNovosLivros[j + 1].getId()) {
+                    Livro temp = tabelaNovosLivros[j];
+                    tabelaNovosLivros[j] = tabelaNovosLivros[j + 1];
+                    tabelaNovosLivros[j + 1] = temp;
+                }
+            }
+        }
+    }
     void inserirLivros(Livro tabelaNovosLivros[], int tamanhoTabelaNovosLivros)
-    {                  // Tabela novos livros = T
-
-        int tamanhoTabelaGeradaAutores = tamanhoTabelaNovosLivros + tamanhoTabelaLivrosAtual;
-
-        // A
-        Livro tabelaGeradaAutores[tamanhoTabelaGeradaAutores];
-
-        // s
+    {                  
+        ordenaIdLivroParaInserir(tabelaNovosLivros, tamanhoTabelaNovosLivros);
+        int tamanhoTabelaGeradaLivros = tamanhoTabelaNovosLivros + tamanhoTabelaLivrosAtual;
+        
+        Livro tabelaGeradaLivros[tamanhoTabelaGeradaLivros];
+        
         int contadorTabelaPrincipal = 0;
-
-        // t
+        
         int contadortabelaNovosLivros = 0;
-
-        // a
+        
         int contadorTabelaGerada = 0;
 
-        while(contadorTabelaPrincipal < getTamanhoAtual() && contadortabelaNovosLivros < tamanhoTabelaGeradaAutores){
+        while(contadorTabelaPrincipal < getTamanhoAtual() && contadortabelaNovosLivros < tamanhoTabelaGeradaLivros){
             if(tabelaDeLivros[contadorTabelaPrincipal].getId() < tabelaNovosLivros[contadortabelaNovosLivros].getId()){
-                tabelaGeradaAutores[contadorTabelaGerada] = tabelaDeLivros[contadorTabelaPrincipal++];
+                tabelaGeradaLivros[contadorTabelaGerada] = tabelaDeLivros[contadorTabelaPrincipal++];
             }else{
-                tabelaGeradaAutores[contadorTabelaGerada] = tabelaNovosLivros[contadortabelaNovosLivros++];
+                tabelaGeradaLivros[contadorTabelaGerada] = tabelaNovosLivros[contadortabelaNovosLivros++];
             }
             contadorTabelaGerada++;
         }
 
         while(contadorTabelaPrincipal < getTamanhoAtual()){
-            tabelaGeradaAutores[contadorTabelaGerada++] = tabelaDeLivros[contadorTabelaPrincipal++];
+            tabelaGeradaLivros[contadorTabelaGerada++] = tabelaDeLivros[contadorTabelaPrincipal++];
         }
 
         while(contadortabelaNovosLivros < tamanhoTabelaNovosLivros){
-            tabelaGeradaAutores[contadorTabelaGerada++] = tabelaNovosLivros[contadortabelaNovosLivros++];
+            tabelaGeradaLivros[contadorTabelaGerada++] = tabelaNovosLivros[contadortabelaNovosLivros++];
         }
 
-        atualizaTabela(tabelaDeLivros, tabelaGeradaAutores, tamanhoTabelaGeradaAutores);
+        atualizaTabela(tabelaDeLivros, tabelaGeradaLivros, tamanhoTabelaGeradaLivros);
     }
 
     void updateLivro(Livro livro)
@@ -135,25 +137,20 @@ public:
     
     void deleteByID (int tabelaLivrosRemovidos[], int tamanhoTabelaLivrosRemovidos){
 
-        // Clientes S = tabelaDeLivros
-        // T = IDs a remover
-        // A = Tabela atualizada sem Autores que foram deletados
+        int tamanhoTabelaGeradaLivros = tamanhoTabelaLivrosAtual - tamanhoTabelaLivrosRemovidos;
 
-        // contA
-        int tamanhoTabelaGeradaAutores = tamanhoTabelaLivrosAtual - tamanhoTabelaLivrosRemovidos;
+        Livro tabelaGeradaLivros[tamanhoTabelaGeradaLivros];
 
-        Livro tabelaGeradaAutores[tamanhoTabelaGeradaAutores];
-
-        int i = 0, j = 0, k = 0; // i (contador de S) j (contador de T) k (contador de A)
+        int i = 0, j = 0, k = 0;
 
         for (;j < tamanhoTabelaLivrosRemovidos; i++){
             if (tabelaDeLivros[i].getId() != tabelaLivrosRemovidos[j]){
-                tabelaGeradaAutores[k].setId(tabelaDeLivros[i].getId());
-                tabelaGeradaAutores[k].setNomeLivro(tabelaDeLivros[i].getNomeLivro());
-                tabelaGeradaAutores[k].setCodigoAutor(tabelaDeLivros[i].getCodigoAutor());
-                tabelaGeradaAutores[k].setCodigoEditora(tabelaDeLivros[i].getCodigoEditora());
-                tabelaGeradaAutores[k].setCodigoGenero(tabelaDeLivros[i].getCodigoGenero());
-                tabelaGeradaAutores[k].setDisponivel(tabelaDeLivros[i].isDisponivel());
+                tabelaGeradaLivros[k].setId(tabelaDeLivros[i].getId());
+                tabelaGeradaLivros[k].setNomeLivro(tabelaDeLivros[i].getNomeLivro());
+                tabelaGeradaLivros[k].setCodigoAutor(tabelaDeLivros[i].getCodigoAutor());
+                tabelaGeradaLivros[k].setCodigoEditora(tabelaDeLivros[i].getCodigoEditora());
+                tabelaGeradaLivros[k].setCodigoGenero(tabelaDeLivros[i].getCodigoGenero());
+                tabelaGeradaLivros[k].setDisponivel(tabelaDeLivros[i].isDisponivel());
                 k++;
             }
             else {
@@ -161,13 +158,13 @@ public:
             }
         }
         while (i < tamanhoTabelaLivrosAtual){
-            tabelaGeradaAutores[k].setId(tabelaDeLivros[i].getId());
-            tabelaGeradaAutores[k].setId(tabelaDeLivros[i].getId());
-            tabelaGeradaAutores[k].setNomeLivro(tabelaDeLivros[i].getNomeLivro());
-            tabelaGeradaAutores[k].setCodigoAutor(tabelaDeLivros[i].getCodigoAutor());
-            tabelaGeradaAutores[k].setCodigoEditora(tabelaDeLivros[i].getCodigoEditora());
-            tabelaGeradaAutores[k].setCodigoGenero(tabelaDeLivros[i].getCodigoGenero());
-            tabelaGeradaAutores[k].setDisponivel(tabelaDeLivros[i].isDisponivel());
+            tabelaGeradaLivros[k].setId(tabelaDeLivros[i].getId());
+            tabelaGeradaLivros[k].setId(tabelaDeLivros[i].getId());
+            tabelaGeradaLivros[k].setNomeLivro(tabelaDeLivros[i].getNomeLivro());
+            tabelaGeradaLivros[k].setCodigoAutor(tabelaDeLivros[i].getCodigoAutor());
+            tabelaGeradaLivros[k].setCodigoEditora(tabelaDeLivros[i].getCodigoEditora());
+            tabelaGeradaLivros[k].setCodigoGenero(tabelaDeLivros[i].getCodigoGenero());
+            tabelaGeradaLivros[k].setDisponivel(tabelaDeLivros[i].isDisponivel());
             i++;
             k++;
         }

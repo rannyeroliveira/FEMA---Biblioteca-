@@ -1,7 +1,3 @@
-//
-// Created by Gabriel Isper on 19/05/25.
-//
-
 #ifndef EMPRESTIMOSERVICE_H
 #define EMPRESTIMOSERVICE_H
 
@@ -36,10 +32,10 @@ class EmprestimoService {
         return data;
     }
 
-    // retorna true se data1 for maior que data2
+
     bool compararData(tm dataAtual, tm dataPrevista)
     {
-        // Normaliza as structs tm e converte para time_t
+
         time_t t1 = std::mktime(&dataAtual);
         time_t t2 = std::mktime(&dataPrevista);
         return t1 > t2;
@@ -49,8 +45,8 @@ class EmprestimoService {
         time_t t1 = std::mktime(&data1);
         time_t t2 = std::mktime(&data2);
 
-        double segundos = std::difftime(t1, t2);  // diferença em segundos
-        int dias = static_cast<int>(segundos / (60 * 60 * 24));  // converte para dias
+        double segundos = std::difftime(t1, t2);
+        int dias = static_cast<int>(segundos / (60 * 60 * 24));
 
         return dias;
     }

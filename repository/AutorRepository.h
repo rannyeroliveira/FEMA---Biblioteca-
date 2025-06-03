@@ -1,7 +1,3 @@
-//
-// Created by Gabriel Isper on 14/05/25.
-//
-
 #ifndef AUTORREPOSITORY_H
 #define AUTORREPOSITORY_H
 
@@ -54,22 +50,28 @@ public:
 
         return false;
     }
-
+    void ordenaIdAutorParaInserir(Autor tabelaNovosAutores[], int tamanhoTabelaNovosAutores) {
+        for (int i = 0; i < tamanhoTabelaNovosAutores - 1; ++i) {
+            for (int j = 0; j < tamanhoTabelaNovosAutores - i - 1; ++j) {
+                if (tabelaNovosAutores[j].getId() > tabelaNovosAutores[j + 1].getId()) {
+                    Autor temp = tabelaNovosAutores[j];
+                    tabelaNovosAutores[j] = tabelaNovosAutores[j + 1];
+                    tabelaNovosAutores[j + 1] = temp;
+                }
+            }
+        }
+    }
     void inserirAutores(Autor tabelaNovosAutores[], int tamanhoTabelaNovosAutores)
-    {                  // Tabela novos autores = T
-
+    {
+        ordenaIdAutorParaInserir(tabelaNovosAutores, tamanhoTabelaNovosAutores);
         int tamanhoTabelaGeradaAutores = tamanhoTabelaNovosAutores + tamanhoTabelaAutoresAtual;
 
-        // A
         Autor tabelaGeradaAutores[tamanhoTabelaGeradaAutores];
 
-        // s
         int contadorTabelaPrincipal = 0;
 
-        // t
         int contadorTabelaNovosAutores = 0;
 
-        // a
         int contadorTabelaGerada = 0;
 
         while(contadorTabelaPrincipal < getTamanhoAtual() && contadorTabelaNovosAutores < tamanhoTabelaGeradaAutores){
@@ -92,8 +94,6 @@ public:
         atualizaTabela(tabelaDeAutores, tabelaGeradaAutores, tamanhoTabelaGeradaAutores);
     }
 
-    // Da pra trocar e fazer um array, tipo se ele mandar 10 autores a gente atualiza os 10
-    // porém isso adiciona mais complexidade
     void updateAutor(char nomeAutor[], int id)
     {
         int i = 0;
@@ -112,17 +112,11 @@ public:
 
 
     void deleteByID (int TabelaAutoresRemovidos[], int tamanhoTabelaAutoresRemovidos){
-
-        // Clientes S = tabelaDeAutores
-        // T = IDs a remover
-        // A = Tabela atualizada sem Autores que foram deletados
-
-        // contA
         int tamanhoTabelaGeradaAutores = tamanhoTabelaAutoresAtual - tamanhoTabelaAutoresRemovidos;
 
         Autor tabelaGeradaAutores[tamanhoTabelaGeradaAutores];
 
-        int i = 0, j = 0, k = 0; // i (contador de S) j (contador de T) k (contador de A)
+        int i = 0, j = 0, k = 0;
 
         for (;j < tamanhoTabelaAutoresRemovidos; i++){
             if (tabelaDeAutores[i].getId() != TabelaAutoresRemovidos[j]){

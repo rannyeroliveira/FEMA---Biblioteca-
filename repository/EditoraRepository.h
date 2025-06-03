@@ -50,10 +50,20 @@ public:
 
         return false;
     }
-
+    void ordenaIdGeneroParaInserir(Editora tabelaNovasEditoras[], int tamanhoTabelaNovasEditoras) {
+        for (int i = 0; i < tamanhoTabelaNovasEditoras - 1; ++i) {
+            for (int j = 0; j < tamanhoTabelaNovasEditoras - i - 1; ++j) {
+                if (tabelaNovasEditoras[j].getId() > tabelaNovasEditoras[j + 1].getId()) {
+                    Editora temp = tabelaNovasEditoras[j];
+                    tabelaNovasEditoras[j] = tabelaNovasEditoras[j + 1];
+                    tabelaNovasEditoras[j + 1] = temp;
+                }
+            }
+        }
+    }
     void inserirEditoras(Editora tabelaNovasEditoras[], int tamanhoTabelaNovasEditoras)
     {                  // Tabela novas editoras = T
-
+        ordenaIdGeneroParaInserir(tabelaNovasEditoras, tamanhoTabelaNovasEditoras);
         int tamanhotabelaGeradaEditora = tamanhoTabelaNovasEditoras + tamanhoTabelaEditorasAtual;
 
         // A
@@ -107,16 +117,14 @@ public:
 
     void deleteByID (int TabelaEditorasRemovidas[], int tamanhoTabelaEditorasRemovidas){
 
-        // Clientes S = tabelaDeEditoras
-        // T = IDs a remover
-        // A = Tabela atualizada sem Editoras que foram deletadas
 
-        // contA
+
+
         int tamanhoTabelaGeradaEditora = tamanhoTabelaEditorasAtual - tamanhoTabelaEditorasRemovidas;
 
         Editora tabelaGeradaEditora[tamanhoTabelaGeradaEditora];
 
-        int i = 0, j = 0, k = 0; // i (contador de S) j (contador de T) k (contador de A)
+        int i = 0, j = 0, k = 0;
 
         for (;j < tamanhoTabelaEditorasRemovidas; i++){
             if (tabelaDeEditoras[i].getId() != TabelaEditorasRemovidas[j]){

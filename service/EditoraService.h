@@ -11,7 +11,7 @@ class EditoraService
 {
     EditoraRepository editoraRepository;
 
-    bool isIdRepetido(Editora* editora, int id, int contAutoresInseridos)
+    bool isIdRepetido(Editora* editora, int id, int contEditoresInseridos)
     {
         int i = 0;
 
@@ -22,7 +22,7 @@ class EditoraService
             }
 
             i++;
-        } while (i < contAutoresInseridos);
+        } while (i < contEditoresInseridos);
 
         return false;
     }

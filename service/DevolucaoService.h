@@ -1,7 +1,3 @@
-//
-// Created by ranny on 28/05/2025.
-//
-
 #ifndef DEVOLUCAOSERVICE_H
 #define DEVOLUCAOSERVICE_H
 
@@ -52,12 +48,12 @@ public:
 
     Emprestimo emprestimo = emprestimorepository.getByID(codEmpDevolucao);
 
-    // Só continua se a data efetiva de devolução estiver "vazia"
+
     if (verificarNullTime(emprestimo.getDataEfetiva())) {
         Livro livro = livrorepository.getByID(emprestimo.getCodigoLivro());
         Pessoa pessoa = pessoarepository.getByID(emprestimo.getCodigoPessoa());
 
-        // Aqui você precisa garantir que o Livro tenha métodos para obter autor/editora
+
         Autor autor = autorepository.getByID(livro.getCodigoAutor());
         Editora editora = editorarepository.getByID(livro.getCodigoEditora());
 
@@ -67,11 +63,11 @@ public:
         cout << "Nome do livro: " << livro.getNomeLivro() << endl;
         cout << "Nome da editora: " << editora.getNomeEdtr() << endl;
         cout << "Nome do autor: " << autor.getNomeAutor() << endl;
-        cout << "Data do emprestimo: " << emprestimo.getDataEmprestimo().tm_mday << "/" << emprestimo.getDataEmprestimo().tm_mon + 1 << "/" << emprestimo.getDataEmprestimo().tm_year + 1900 << endl;
-        cout << "Data da devolucao: " << data_atual.tm_mday << "/" << data_atual.tm_mon + 1 << "/" << data_atual.tm_year + 1900 << endl;
+        cout << "Data do empréstimo: " << emprestimo.getDataEmprestimo().tm_mday << "/" << emprestimo.getDataEmprestimo().tm_mon + 1 << "/" << emprestimo.getDataEmprestimo().tm_year + 1900 << endl;
+        cout << "Data da devolução: " << data_atual.tm_mday << "/" << data_atual.tm_mon + 1 << "/" << data_atual.tm_year + 1900 << endl;
 
         char confirmacao;
-        cout << "Confirma devolucao? [S/N]: ";
+        cout << "Confirma devolução? [S/N]: ";
         cin >> confirmacao;
 
         if (confirmacao == 's' || confirmacao == 'S') {

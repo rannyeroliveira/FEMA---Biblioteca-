@@ -35,7 +35,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "FEMA___Biblioteca_::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-FEMA___Biblioteca_-Debug-87e02568f2ef63d5c389.json",
+					"jsonFile" : "target-FEMA___Biblioteca_-Debug-130778b4dc0df52c29ae.json",
 					"name" : "FEMA___Biblioteca_",
 					"projectIndex" : 0
 				}
@@ -45,8 +45,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/cmake-build-debug",
-		"source" : "C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-"
+		"build" : "C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/cmake-build-debug",
+		"source" : "C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-"
 	},
 	"version" : 
 	{

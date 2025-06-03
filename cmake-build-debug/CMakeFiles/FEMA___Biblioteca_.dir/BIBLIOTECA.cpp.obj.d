@@ -1,5 +1,5 @@
 CMakeFiles/FEMA___Biblioteca_.dir/BIBLIOTECA.cpp.obj: \
- C:\Users\ranny\OneDrive\Desktop\FEMA\projeto-begosso\FEMA---Biblioteca-\BIBLIOTECA.cpp \
+ C:\Users\ranny\OneDrive\Desktop\FEMA\BEGOSSO\FEMA---Biblioteca-\BIBLIOTECA.cpp \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iostream \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/requires_hosted.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
@@ -134,32 +134,37 @@ CMakeFiles/FEMA___Biblioteca_.dir/BIBLIOTECA.cpp.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ostream.tcc \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc \
- C:\Users\ranny\OneDrive\Desktop\FEMA\projeto-begosso\FEMA---Biblioteca-\service/AutorService.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Autor.h \
+ C:\Users\ranny\OneDrive\Desktop\FEMA\BEGOSSO\FEMA---Biblioteca-\service/AutorService.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Autor.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cstring \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/x86_64-w64-mingw32/include/string.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/AutorRepository.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Autor.h \
- C:\Users\ranny\OneDrive\Desktop\FEMA\projeto-begosso\FEMA---Biblioteca-\service/EditoraService.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/EditoraRepository.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Editora.h \
- C:\Users\ranny\OneDrive\Desktop\FEMA\projeto-begosso\FEMA---Biblioteca-\service/LivroService.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/LivroRepository.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Livro.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/GeneroRepository.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Genero.h \
- C:\Users\ranny\OneDrive\Desktop\FEMA\projeto-begosso\FEMA---Biblioteca-\service/EmprestimoService.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/EmprestimoRepository.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/repository/AutorRepository.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Autor.h \
+ C:\Users\ranny\OneDrive\Desktop\FEMA\BEGOSSO\FEMA---Biblioteca-\service/EditoraService.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Editora.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/repository/EditoraRepository.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Editora.h \
+ C:\Users\ranny\OneDrive\Desktop\FEMA\BEGOSSO\FEMA---Biblioteca-\service/LivroService.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/repository/LivroRepository.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Livro.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/repository/GeneroRepository.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Genero.h \
+ C:\Users\ranny\OneDrive\Desktop\FEMA\BEGOSSO\FEMA---Biblioteca-\service/EmprestimoService.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/repository/EmprestimoRepository.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ctime \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Emprestimo.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/PessoaRepository.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Pessoa.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/CPF.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Cidade.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/repository/CidadeRepository.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Cidade.h \
- C:\Users\ranny\OneDrive\Desktop\FEMA\projeto-begosso\FEMA---Biblioteca-\service/PessoaService.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/Pessoa.h \
- C:/Users/ranny/OneDrive/Desktop/FEMA/projeto-begosso/FEMA---Biblioteca-/model/CPF.h \
- C:\Users\ranny\OneDrive\Desktop\FEMA\projeto-begosso\FEMA---Biblioteca-\service/DevolucaoService.h
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Emprestimo.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/repository/PessoaRepository.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Pessoa.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/CPF.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Cidade.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/repository/CidadeRepository.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Cidade.h \
+ C:\Users\ranny\OneDrive\Desktop\FEMA\BEGOSSO\FEMA---Biblioteca-\service/PessoaService.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Pessoa.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/CPF.h \
+ C:/Program\ Files/JetBrains/CLion\ 2024.3.4/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/limits \
+ C:\Users\ranny\OneDrive\Desktop\FEMA\BEGOSSO\FEMA---Biblioteca-\service/DevolucaoService.h \
+ C:\Users\ranny\OneDrive\Desktop\FEMA\BEGOSSO\FEMA---Biblioteca-\service/CidadeService.h \
+ C:\Users\ranny\OneDrive\Desktop\FEMA\BEGOSSO\FEMA---Biblioteca-\service/GeneroService.h \
+ C:/Users/ranny/OneDrive/Desktop/FEMA/BEGOSSO/FEMA---Biblioteca-/model/Genero.h

@@ -49,42 +49,49 @@ public:
 
         return false;
     }
+    void ordenaIdCidadeParaInserir(Cidade tabelaNovasCidades[], int tamanhoTabelaNovasCidades) {
+        for (int i = 0; i < tamanhoTabelaNovasCidades - 1; ++i) {
+            for (int j = 0; j < tamanhoTabelaNovasCidades - i - 1; ++j) {
+                if (tabelaNovasCidades[j].getId() > tabelaNovasCidades[j + 1].getId()) {
+                    Cidade temp = tabelaNovasCidades[j];
+                    tabelaNovasCidades[j] = tabelaNovasCidades[j + 1];
+                    tabelaNovasCidades[j + 1] = temp;
+                }
+            }
+        }
+    }
 
     void inserirCidades(Cidade tabelaNovasCidades[], int tamanhoTabelaNovasCidades)
-    {                  // Tabela novas Cidades = T
-
-        int tamanhoTabelaGeradaAutores = tamanhoTabelaNovasCidades + tamanhoTabelaCidadesAtual;
-
-        // A
-        Cidade tabelaGeradaAutores[tamanhoTabelaGeradaAutores];
-
-        // s
+    {                  
+        ordenaIdCidadeParaInserir(tabelaNovasCidades, tamanhoTabelaNovasCidades);
+        int tamanhoTabelaGeradaCidades = tamanhoTabelaNovasCidades + tamanhoTabelaCidadesAtual;
+        
+        Cidade tabelaGeradaCidades[tamanhoTabelaGeradaCidades];
+        
         int contadorTabelaPrincipal = 0;
-
-        // t
+        
         int contadorTabelaNovasCidades = 0;
-
-        // a
+        
         int contadorTabelaGerada = 0;
 
-        while(contadorTabelaPrincipal < getTamanhoAtual() && contadorTabelaNovasCidades < tamanhoTabelaGeradaAutores){
+        while(contadorTabelaPrincipal < getTamanhoAtual() && contadorTabelaNovasCidades < tamanhoTabelaGeradaCidades){
             if(tabelaDeCidades[contadorTabelaPrincipal].getId() < tabelaNovasCidades[contadorTabelaNovasCidades].getId()){
-                tabelaGeradaAutores[contadorTabelaGerada] = tabelaDeCidades[contadorTabelaPrincipal++];
+                tabelaGeradaCidades[contadorTabelaGerada] = tabelaDeCidades[contadorTabelaPrincipal++];
             }else{
-                tabelaGeradaAutores[contadorTabelaGerada] = tabelaNovasCidades[contadorTabelaNovasCidades++];
+                tabelaGeradaCidades[contadorTabelaGerada] = tabelaNovasCidades[contadorTabelaNovasCidades++];
             }
             contadorTabelaGerada++;
         }
 
         while(contadorTabelaPrincipal < getTamanhoAtual()){
-            tabelaGeradaAutores[contadorTabelaGerada++] = tabelaDeCidades[contadorTabelaPrincipal++];
+            tabelaGeradaCidades[contadorTabelaGerada++] = tabelaDeCidades[contadorTabelaPrincipal++];
         }
 
         while(contadorTabelaNovasCidades < tamanhoTabelaNovasCidades){
-            tabelaGeradaAutores[contadorTabelaGerada++] = tabelaNovasCidades[contadorTabelaNovasCidades++];
+            tabelaGeradaCidades[contadorTabelaGerada++] = tabelaNovasCidades[contadorTabelaNovasCidades++];
         }
 
-        atualizaTabela(tabelaDeCidades, tabelaGeradaAutores, tamanhoTabelaGeradaAutores);
+        atualizaTabela(tabelaDeCidades, tabelaGeradaCidades, tamanhoTabelaGeradaCidades);
     }
     
     void updateCidade(int id, char nomeCidade[], char UF[])
@@ -104,17 +111,11 @@ public:
     }
     
     void deleteByID (int tabelaCidadesRemovidas[], int tamanhoTabelaCidadesRemovidas){
-
-        // Clientes S = tabelaDeCidades
-        // T = IDs a remover
-        // A = Tabela atualizada sem Autores que foram deletados
-
-        // contA
         int tamanhoTabelaGeradaCidades = tamanhoTabelaCidadesAtual - tamanhoTabelaCidadesRemovidas;
 
         Cidade tabelaGeradaCidades[tamanhoTabelaGeradaCidades];
 
-        int i = 0, j = 0, k = 0; // i (contador de S) j (contador de T) k (contador de A)
+        int i = 0, j = 0, k = 0;
 
         for (;j < tamanhoTabelaCidadesRemovidas; i++){
             if (tabelaDeCidades[i].getId() != tabelaCidadesRemovidas[j]){

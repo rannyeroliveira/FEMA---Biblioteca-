@@ -1,8 +1,3 @@
-//
-
-// Created by Gabriel Isper on 19/05/25.
-//
-
 #ifndef EMPRESTIMOREPOSITORY_H
 #define EMPRESTIMOREPOSITORY_H
 
@@ -192,7 +187,7 @@ private:
     int buscaBinaria(int i, int f, Emprestimo a[], int idEmprestimo)
     {
         int m;
-        f--; // Corrige para o último índice válido do vetor
+        f--;
         while (i <= f)
         {
             m = (i + f) / 2;
@@ -213,12 +208,12 @@ private:
         return -1;
     }
 
-    // Cria uma struct tm a partir de dia, mês, ano
+
     tm criarData(int dia, int mes, int ano) {
         tm data{};
         data.tm_mday = dia;
-        data.tm_mon = mes - 1;      // tm_mon vai de 0 a 11
-        data.tm_year = ano - 1900;  // tm_year é anos desde 1900
+        data.tm_mon = mes - 1;
+        data.tm_year = ano - 1900;
         return data;
     }
 
